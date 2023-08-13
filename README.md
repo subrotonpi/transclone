@@ -1,6 +1,6 @@
 # TransClone: A Language Agnostic Code Clone Detector
 
-### Run the following To set up Transcoder and other dependencies-
+### Run the following to set up the dependencies -
 
 ```
 setup.sh 
