@@ -25,7 +25,6 @@ sudo ln -s libclang-10.so.1 libclang-14.so
 
 
 #### Contact
-```
-Subroto Nag Pinku
-E-mail: subroto.npi@usask.ca
-```
+
+Subroto Nag Pinku, 
+E-mail: [subroto.npi@usask.ca](mailto:subroto.npi@usask.ca) 
