@@ -17,15 +17,11 @@ parser.add_argument("--tgt_lang",type=str, default="java")
 parser.add_argument("--fragment_to_conv", type=str, default=None)
 #srcml_gmn
 parser.add_argument("--threshold", default=0)
-
 parser.add_argument("--data", default=project_root+'/storage/')
 parser.add_argument("--subject_system", default= project_root+'/storage/systems_converted')
 parser.add_argument('--root' , default=project_root+'/')
 parser.add_argument('--model_path' , default= project_root+'/gmn/gmn_srcml_clcdsa.pt')
 parser.add_argument("--pairs",default= project_root+'/storage/pairs.csv')
-# parser.add_argument("--predictions",default= project_root+'/storage/predictions.csv')
-# parser.add_argument("--src",default= "python")
-# parser.add_argument("--tgt",default= "java")
 args = parser.parse_args()
 logging.info(args)
 #preprocess_system
