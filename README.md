@@ -1,5 +1,12 @@
 # TransClone: A Language Agnostic Code Clone Detector
 
+### Requirements: 
+- Make sure that you have both client and dev version of [srcML](https://www.srcml.org/#download)
+- Transcoder is already provided in this repository.
+- The tool was developed and tested on machines with GPU, Nvidia RTX3080 and RTX3080ti.
+- It works on CPU only machines too, however, GPU is preffered.
+- It currently supports Java and Python.
+
 ### Run the following to set up the dependencies -
 
 ```
@@ -15,6 +22,7 @@ sudo ln -s libclang-10.so.1 libclang-14.so
 - Through the shell script, transclone.sh [Preferred]
 - Or the python script, gmn_pipeline.py
 ```
+
 
 #### Contact:
 ```
