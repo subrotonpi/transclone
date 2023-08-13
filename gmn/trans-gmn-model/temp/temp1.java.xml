@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="Java" filename="/home/egk204/PycharmProjects/code-clone-multilingual/experimental/final_model/temp/temp1.java" hash="cfa5b67cc94328773316f62c9da8ed7f4b4f1b32"><import>import <name><name>java</name><operator>.</operator><name>io</name><operator>.</operator><name>*</name></name>;</import>
+<import>import <name><name>java</name><operator>.</operator><name>util</name><operator>.</operator><name>*</name></name>;</import>
+
+<class>class <name>Solver</name> <block>{
+
+    <decl_stmt><decl><type><name>boolean</name></type> <name>isInFile</name></decl>, <decl><type ref="prev"/><name>isOutFile</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name>Scanner</name></type> <name>reader</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name>DataOutputStream</name></type> <name>writer</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name><name>List</name><argument_list type="generic">&lt;<argument><name>Long</name></argument>&gt;</argument_list></name></type> <name>matchList</name></decl>;</decl_stmt>
+
+    <constructor><specifier>public</specifier> <name>Solver</name><parameter_list>(<parameter><decl><type><name><name>String</name><index>[]</index></name></type> <name>args</name></decl></parameter>)</parameter_list> <throws>throws <argument><expr><name>Exception</name></expr></argument></throws> <block>{<block_content>
+        <expr_stmt><expr><name>isInFile</name> <operator>=</operator> <operator>(</operator><name><name>args</name><operator>.</operator><name>length</name></name> <operator>&gt;</operator> <literal type="number">0</literal><operator>)</operator></expr>;</expr_stmt>
+        <if_stmt><if>if <condition>(<expr><name>isInFile</name></expr>)</condition><block type="pseudo"><block_content>
+            <expr_stmt><expr><name>reader</name> <operator>=</operator> <operator>new</operator> <call><name>Scanner</name><argument_list>(<argument><expr><operator>new</operator> <call><name>File</name><argument_list>(<argument><expr><name><name>args</name><index>[<expr><literal type="number">0</literal></expr>]</index></name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt></block_content></block></if>
+        <else>else<block type="pseudo"><block_content>
+            <expr_stmt><expr><name>reader</name> <operator>=</operator> <operator>new</operator> <call><name>Scanner</name><argument_list>(<argument><expr><name><name>System</name><operator>.</operator><name>in</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt></block_content></block></else></if_stmt>
+        <expr_stmt><expr><name>isOutFile</name> <operator>=</operator> <operator>(</operator><name><name>args</name><operator>.</operator><name>length</name></name> <operator>&gt;</operator> <literal type="number">1</literal><operator>)</operator></expr>;</expr_stmt>
+        <if_stmt><if>if <condition>(<expr><name>isOutFile</name></expr>)</condition><block type="pseudo"><block_content>
+            <expr_stmt><expr><name>writer</name> <operator>=</operator> <operator>new</operator> <call><name>DataOutputStream</name><argument_list>(<argument><expr><operator>new</operator> <call><name>FileOutputStream</name><argument_list>(<argument><expr><operator>new</operator> <call><name>File</name><argument_list>(<argument><expr><name><name>args</name><index>[<expr><literal type="number">1</literal></expr>]</index></name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt></block_content></block></if></if_stmt>
+
+    </block_content>}</block></constructor>
+
+    <function><type><specifier>public</specifier> <name>void</name></type> <name>write</name><parameter_list>(<parameter><decl><type><name>String</name></type> <name>str</name></decl></parameter>)</parameter_list> <throws>throws <argument><expr><name>Exception</name></expr></argument></throws> <block>{<block_content>
+        <if_stmt><if>if <condition>(<expr><name>isOutFile</name></expr>)</condition><block type="pseudo"><block_content>
+            <expr_stmt><expr><call><name><name>writer</name><operator>.</operator><name>writeBytes</name></name><argument_list>(<argument><expr><name>str</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></block_content></block></if></if_stmt>
+        <comment type="line">//System.out.print(str);</comment>
+    </block_content>}</block></function>
+
+    <function><type><specifier>public</specifier> <name>void</name></type> <name>writeln</name><parameter_list>(<parameter><decl><type><name>String</name></type> <name>str</name></decl></parameter>)</parameter_list> <throws>throws <argument><expr><name>Exception</name></expr></argument></throws> <block>{<block_content>
+        <expr_stmt><expr><call><name>write</name><argument_list>(<argument><expr><name>str</name> <operator>+</operator> <call><name><name>System</name><operator>.</operator><name>lineSeparator</name></name><argument_list>()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    </block_content>}</block></function>
+
+    <function><type><specifier>public</specifier> <specifier>static</specifier> <name>void</name></type> <name>main</name><parameter_list>(<parameter><decl><type><name><name>String</name><index>[]</index></name></type> <name>args</name></decl></parameter>)</parameter_list> <throws>throws <argument><expr><name>Exception</name></expr></argument></throws> <block>{<block_content>
+        <expr_stmt><expr><operator>new</operator> <call><name>Solver</name><argument_list>(<argument><expr><name>args</name></expr></argument>)</argument_list></call><operator>.</operator><call><name>solve</name><argument_list>()</argument_list></call></expr>;</expr_stmt>
+    </block_content>}</block></function>
+
+    <function><type><specifier>public</specifier> <name>void</name></type> <name>solve</name><parameter_list>()</parameter_list> <throws>throws <argument><expr><name>Exception</name></expr></argument></throws> <block>{<block_content>
+        <expr_stmt><expr><call><name>init</name><argument_list>()</argument_list></call></expr>;</expr_stmt>
+        <decl_stmt><decl><type><name>int</name></type> <name>T</name> <init>= <expr><call><name><name>reader</name><operator>.</operator><name>nextInt</name></name><argument_list>()</argument_list></call></expr></init></decl>;</decl_stmt>
+        <for>for <control>(<init><decl><type><name>int</name></type> <name>i</name> <init>= <expr><literal type="number">1</literal></expr></init></decl>;</init> <condition><expr><name>i</name> <operator>&lt;=</operator> <name>T</name></expr>;</condition> <incr><expr><name>i</name><operator>++</operator></expr></incr>)</control> <block>{<block_content>
+            <expr_stmt><expr><call><name>write</name><argument_list>(<argument><expr><literal type="string">"Case #"</literal> <operator>+</operator> <name>i</name> <operator>+</operator> <literal type="string">": "</literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name>solveOne</name><argument_list>()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name>writeln</name><argument_list>(<argument><expr><literal type="string">""</literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        </block_content>}</block></for>
+    </block_content>}</block></function>
+
+    <function><type><specifier>public</specifier> <name>String</name></type> <name>reverse</name><parameter_list>(<parameter><decl><type><name>String</name></type> <name>str</name></decl></parameter>)</parameter_list> <block>{<block_content>
+        <return>return <expr><operator>new</operator> <call><name>StringBuffer</name><argument_list>(<argument><expr><name>str</name></expr></argument>)</argument_list></call><operator>.</operator><call><name>reverse</name><argument_list>()</argument_list></call><operator>.</operator><call><name>toString</name><argument_list>()</argument_list></call></expr>;</return>
+    </block_content>}</block></function>
+
+    <function><type><specifier>public</specifier> <name>boolean</name></type> <name>isPalin</name><parameter_list>(<parameter><decl><type><name>long</name></type> <name>num</name></decl></parameter>)</parameter_list> <throws>throws <argument><expr><name>Exception</name></expr></argument></throws> <block>{<block_content>
+        <decl_stmt><decl><type><name>String</name></type> <name>str</name> <init>= <expr><call><name><name>Long</name><operator>.</operator><name>toString</name></name><argument_list>(<argument><expr><name>num</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+        <return>return <expr><call><name><name>str</name><operator>.</operator><name>equals</name></name><argument_list>(<argument><expr><call><name>reverse</name><argument_list>(<argument><expr><name>str</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+    </block_content>}</block></function>
+
+    <function><type><specifier>public</specifier> <name>boolean</name></type> <name>isLong</name><parameter_list>(<parameter><decl><type><name>double</name></type> <name>d</name></decl></parameter>)</parameter_list> <block>{<block_content>
+        <return>return <expr><operator>(</operator><name>d</name> <operator>==</operator> <operator>(</operator><name>long</name><operator>)</operator> <name>d</name><operator>)</operator></expr>;</return>
+    </block_content>}</block></function>
+
+    <function><type><specifier>public</specifier> <name>double</name></type> <name>sqrt</name><parameter_list>(<parameter><decl><type><name>long</name></type> <name>num</name></decl></parameter>)</parameter_list> <throws>throws <argument><expr><name>Exception</name></expr></argument></throws> <block>{<block_content>
+        <return>return <expr><call><name><name>Math</name><operator>.</operator><name>sqrt</name></name><argument_list>(<argument><expr><name>num</name></expr></argument>)</argument_list></call></expr>;</return>
+    </block_content>}</block></function>
+
+    <function><type><specifier>public</specifier> <name>void</name></type> <name>init</name><parameter_list>()</parameter_list> <throws>throws <argument><expr><name>Exception</name></expr></argument></throws> <block>{<block_content>
+        <expr_stmt><expr><name>matchList</name> <operator>=</operator> <operator>new</operator> <call><name><name>LinkedList</name><argument_list type="generic">&lt;<argument><name>Long</name></argument>&gt;</argument_list></name><argument_list>()</argument_list></call></expr>;</expr_stmt>
+        <for>for <control>(<init><decl><type><name>int</name></type> <name>i</name> <init>= <expr><literal type="number">1</literal></expr></init></decl>;</init> <condition><expr><name>i</name> <operator>&lt;</operator> <literal type="number">10000000</literal></expr>;</condition> <incr><expr><name>i</name><operator>++</operator></expr></incr>)</control> <block>{<block_content>
+            <decl_stmt><decl><type><name>String</name></type> <name>iStr</name> <init>= <expr><call><name><name>Integer</name><operator>.</operator><name>toString</name></name><argument_list>(<argument><expr><name>i</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <decl_stmt><decl><type><name>String</name></type> <name>pattern1</name> <init>= <expr><name>iStr</name> <operator>+</operator> <call><name>reverse</name><argument_list>(<argument><expr><name>iStr</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name>long</name></type> <name>long1</name> <init>= <expr><call><name><name>Long</name><operator>.</operator><name>parseLong</name></name><argument_list>(<argument><expr><name>pattern1</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name>double</name></type> <name>sqrt1</name> <init>= <expr><call><name>sqrt</name><argument_list>(<argument><expr><name>long1</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name>long</name></type> <name>longSqrt1</name> <init>= <expr><operator>(</operator><name>long</name><operator>)</operator> <name>sqrt1</name></expr></init></decl>;</decl_stmt>
+            <if_stmt><if>if <condition>(<expr><call><name>isLong</name><argument_list>(<argument><expr><name>sqrt1</name></expr></argument>)</argument_list></call> <operator>&amp;&amp;</operator> <call><name>isPalin</name><argument_list>(<argument><expr><name>longSqrt1</name></expr></argument>)</argument_list></call></expr>)</condition><block type="pseudo"><block_content>
+                <expr_stmt><expr><call><name><name>matchList</name><operator>.</operator><name>add</name></name><argument_list>(<argument><expr><name>long1</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></block_content></block></if></if_stmt>
+
+            <decl_stmt><decl><type><name>String</name></type> <name>pattern2</name> <init>= <expr><name>iStr</name> <operator>+</operator> <call><name>reverse</name><argument_list>(<argument><expr><name>iStr</name></expr></argument>)</argument_list></call><operator>.</operator><call><name>substring</name><argument_list>(<argument><expr><literal type="number">1</literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name>long</name></type> <name>long2</name> <init>= <expr><call><name><name>Long</name><operator>.</operator><name>parseLong</name></name><argument_list>(<argument><expr><name>pattern2</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name>double</name></type> <name>sqrt2</name> <init>= <expr><call><name>sqrt</name><argument_list>(<argument><expr><name>long2</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name>long</name></type> <name>longSqrt2</name> <init>= <expr><operator>(</operator><name>long</name><operator>)</operator> <name>sqrt2</name></expr></init></decl>;</decl_stmt>
+            <if_stmt><if>if <condition>(<expr><call><name>isLong</name><argument_list>(<argument><expr><name>sqrt2</name></expr></argument>)</argument_list></call> <operator>&amp;&amp;</operator> <call><name>isPalin</name><argument_list>(<argument><expr><name>longSqrt2</name></expr></argument>)</argument_list></call></expr>)</condition><block type="pseudo"><block_content>
+                <expr_stmt><expr><call><name><name>matchList</name><operator>.</operator><name>add</name></name><argument_list>(<argument><expr><name>long2</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></block_content></block></if></if_stmt>
+        </block_content>}</block></for>
+        <expr_stmt><expr><call><name><name>Collections</name><operator>.</operator><name>sort</name></name><argument_list>(<argument><expr><name>matchList</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    </block_content>}</block></function>
+
+    <function><type><specifier>public</specifier> <name>void</name></type> <name>solveOne</name><parameter_list>()</parameter_list> <throws>throws <argument><expr><name>Exception</name></expr></argument></throws> <block>{<block_content>
+        <comment type="block">/* read data */</comment>
+        <decl_stmt><decl><type><name>long</name></type> <name>a</name> <init>= <expr><call><name><name>reader</name><operator>.</operator><name>nextLong</name></name><argument_list>()</argument_list></call></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><name>long</name></type> <name>b</name> <init>= <expr><call><name><name>reader</name><operator>.</operator><name>nextLong</name></name><argument_list>()</argument_list></call></expr></init></decl>;</decl_stmt>
+        <expr_stmt><expr><call><name><name>reader</name><operator>.</operator><name>nextLine</name></name><argument_list>()</argument_list></call></expr>;</expr_stmt>
+
+        <comment type="block">/* solve */</comment>
+        <decl_stmt><decl><type><name>int</name></type> <name>total</name> <init>= <expr><literal type="number">0</literal></expr></init></decl>;</decl_stmt>
+        <for>for <control>(<init><decl><type><name>long</name></type> <name>l</name> <range>: <expr><name>matchList</name></expr></range></decl></init>)</control> <block>{<block_content>
+            <if_stmt><if>if <condition>(<expr><name>l</name> <operator>&gt;=</operator> <name>a</name> <operator>&amp;&amp;</operator> <name>l</name> <operator>&lt;=</operator> <name>b</name></expr>)</condition><block type="pseudo"><block_content>
+                <expr_stmt><expr><name>total</name><operator>++</operator></expr>;</expr_stmt></block_content></block></if></if_stmt>
+        </block_content>}</block></for>
+        <expr_stmt><expr><call><name>write</name><argument_list>(<argument><expr><call><name><name>Long</name><operator>.</operator><name>toString</name></name><argument_list>(<argument><expr><name>total</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    </block_content>}</block></function>
+}</block></class></unit>

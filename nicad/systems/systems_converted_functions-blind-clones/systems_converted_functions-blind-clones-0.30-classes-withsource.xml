@@ -1,0 +1,7 @@
+<clones>
+<systeminfo processor="nicad6" system="systems_converted" granularity="functions-blind" threshold="30%" minlines="10" maxlines="2500"/>
+<cloneinfo npcs="1" npairs="0"/>
+<runinfo ncompares="0" cputime="26569"/>
+<classinfo nclasses="0"/>
+
+</clones>

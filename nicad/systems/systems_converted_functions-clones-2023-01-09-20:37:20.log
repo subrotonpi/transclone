@@ -1,0 +1,63 @@
+
+Mon  9 Jan 2023 20:37:20 CST
+./tools/clonepairs.x systems/systems_converted_functions-blind.xml 0.30 10 2500 > systems/systems_converted_functions-blind-clones/systems_converted_functions-blind-clones-0.30.xml
+Processing systems/systems_converted_functions-blind.xml with difference threshold 30%, clone size 10 .. 2500 lines
+Reading pcs . done.
+Total 1/6000000 potential clones of 10 lines or more
+Used 0/100000000 total pc lines
+Used 148/600000000 unique line text chars
+ and 4/12000000 unique lines
+Sorting pcs . done.
+Finding clones  done.
+Total 0 pc comparisons
+Pruning embedded clone pairs . done.
+Pruned 0 embedded clone pairs
+Found 0 clone pairs
+Generating XML output  done.
+
+
+real	0m0.130s
+user	0m0.015s
+sys	0m0.012s
+
+Mon  9 Jan 2023 20:37:20 CST
+
+Mon  9 Jan 2023 20:37:20 CST
+./tools/cloneclasses.x systems/systems_converted_functions-blind-clones/systems_converted_functions-blind-clones-0.30.xml > systems/systems_converted_functions-blind-clones/systems_converted_functions-blind-clones-0.30-classes.xml
+Processing systems/systems_converted_functions-blind-clones/systems_converted_functions-blind-clones-0.30.xml
+Reading clone pairs . done.
+Total 0 pairs
+Sorting pairs . done.
+Indexing pairs  done.
+Computing classes  done.
+Clustered clone pairs into 0 classes
+Generating XML output  done.
+
+
+real	0m0.132s
+user	0m0.020s
+sys	0m0.021s
+
+Mon  9 Jan 2023 20:37:21 CST
+
+Mon  9 Jan 2023 20:37:21 CST
+./tools/getsource.x systems/systems_converted_functions-blind-clones/systems_converted_functions-blind-clones-0.30-classes.xml systems/systems_converted_functions-blind-clones/systems_converted_functions-blind-clones-0.30-classes-withsource.xml
+systems/systems_converted_functions-blind-clones/systems_converted_functions-blind-clones-0.30-classes.xml
+
+real	0m0.085s
+user	0m0.001s
+sys	0m0.002s
+
+Mon  9 Jan 2023 20:37:21 CST
+
+Mon  9 Jan 2023 20:37:21 CST
+./tools/tohtmlpairs.x systems/systems_converted_functions-blind-clones/systems_converted_functions-blind-clones-0.30-classes-withsource.xml systems/systems_converted_functions-blind-clones/systems_converted_functions-blind-clones-0.30-classes-withsource.html
+functions-blind
+30%
+
+real	0m0.092s
+user	0m0.001s
+sys	0m0.002s
+
+Mon  9 Jan 2023 20:37:21 CST
+

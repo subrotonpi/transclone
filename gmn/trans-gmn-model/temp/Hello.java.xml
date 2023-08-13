@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="Java" filename="Hello.java" hash="a074b7a58bddf7f4b6156fcd7702df16b58be1f9"><class><specifier>public</specifier> class <name>Hello</name> <block>{
+    <function><type><specifier>public</specifier> <specifier>static</specifier> <name>void</name></type> <name>main</name><parameter_list>(<parameter><decl><type><name><name>String</name><index>[]</index></name></type> <name>args</name></decl></parameter>)</parameter_list> <block>{<block_content>
+        <expr_stmt><expr><call><name><name>System</name><operator>.</operator><name>out</name><operator>.</operator><name>printl</name></name><argument_list>(<argument><expr><literal type="string">"Hello, World!"</literal></expr></argument>)</argument_list></call></expr>;</expr_stmt> 
+    </block_content>}</block></function>
+}</block></class></unit>
