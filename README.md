@@ -18,10 +18,10 @@ sudo ln -s libclang-10.so.1 libclang-14.so
 ```
 
 ### To run the tool
-```
-- Through the shell script, transclone.sh [Preferred]
-- Or the python script, gmn_pipeline.py
-```
+
+- Through the shell script, [transclone.sh](transclone.sh) [Preferred]
+- Or the python script, [gmn_pipeline.py](gmn_pipeline.py)
+
 
 
 #### Contact
