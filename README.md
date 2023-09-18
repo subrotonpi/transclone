@@ -1,5 +1,7 @@
 # TransClone: A Language Agnostic Code Clone Detector
 
+Code for paper, "TransClone: A Language Agnostic Code Clone Detector", IWSC 2023
+
 ### Requirements
 - Make sure that you have both client and dev version of [srcML](https://www.srcml.org/#download)
 - Transcoder is already provided in this repository.
