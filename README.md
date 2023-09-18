@@ -1,5 +1,4 @@
-# TransClone: A Language Agnostic Code Clone Detector
-
+# TransClone
 Code for paper, "TransClone: A Language Agnostic Code Clone Detector", IWSC 2023
 
 ### Requirements
