@@ -4,396 +4,396 @@
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.6180826425552368</scores>
+    <score>-0.5225887894630432</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.625949501991272</scores>
+    <score>-0.21627750992774963</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.6180826425552368</scores>
+    <score>-0.5225887894630432</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.625949501991272</scores>
+    <score>-0.21627750992774963</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.6180826425552368</scores>
+    <score>-0.5225887894630432</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.625949501991272</scores>
+    <score>-0.21627750992774963</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.6180826425552368</scores>
+    <score>-0.5225887894630432</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.625949501991272</scores>
+    <score>-0.21627750992774963</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.6180826425552368</scores>
+    <score>-0.5225887894630432</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.625949501991272</scores>
+    <score>-0.21627750992774963</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.6180826425552368</scores>
+    <score>-0.5225887894630432</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.625949501991272</scores>
+    <score>-0.21627750992774963</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.618082582950592</scores>
+    <score>-0.5225913524627686</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code2>
     <prediction>clone</prediction>
-    <scores>0.992332398891449</scores>
+    <score>0.9804131984710693</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.618082582950592</scores>
+    <score>-0.5225913524627686</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.618082582950592</scores>
+    <score>-0.5225913524627686</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.618082582950592</scores>
+    <score>-0.5225913524627686</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.625949501991272</scores>
+    <score>-0.21627750992774963</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.6259495615959167</scores>
+    <score>-0.2162775695323944</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.6259495615959167</scores>
+    <score>-0.2162775695323944</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>non-clone</prediction>
-    <scores>-0.6259495615959167</scores>
+    <score>-0.2162775695323944</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
   <row>
     <code1>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java</code1>
     <code2>/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java</code2>
     <prediction>clone</prediction>
-    <scores>0.9999999403953552</scores>
+    <score>0.9999998807907104</score>
   </row>
 </data>

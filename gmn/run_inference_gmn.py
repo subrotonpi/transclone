@@ -58,7 +58,7 @@ def detect_clones(args):
     import pandas as pd
     pairs_df = pd.read_csv(args.pairs, names=['code1', 'code2'])
     pairs_df['prediction'] = pd.Series(res)
-    pairs_df['scores'] = pd.Series(scores)
+    pairs_df['score'] = pd.Series(scores)
     res_df = pairs_df
     
     # df_res = pd.DataFrame(res, columns=['item']) #output.item(), add this in test
