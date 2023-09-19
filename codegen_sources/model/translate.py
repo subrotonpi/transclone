@@ -361,7 +361,7 @@ def convert_systems(args, src, tgt):
                 
                 code = get_translation(params, translator)
                 code_ = ''.join(code)
-                logging.info(code_)
+                # logging.info(code_)
                 save_to_file(tgt_fpath, code_)
                 logging.info('SAVING FILE TO-->'+tgt_fpath)                
             except Exception:
