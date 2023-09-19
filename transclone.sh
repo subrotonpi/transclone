@@ -17,7 +17,7 @@ python3 transclone.py \
     --data $PROJECT_ROOT/storage/ \
     --subject_system $PROJECT_ROOT/storage/systems/ \
     --src_gmn_path $PROJECT_ROOT/gmn/gmn_srcml_clcdsa.pt \
-    --pairs $PROJECT_ROOT/storage/pairs.csv
+    --pairs $PROJECT_ROOT/storage/pairs.csv 2>&1 | tee output.log
 
 
 # CUDA_FLAG=False

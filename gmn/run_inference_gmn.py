@@ -20,6 +20,7 @@ def test(args, model, dataset, device):
     count=0
     correct=0
     results=[]
+    scores = []
     for data,label in dataset:
         label=torch.tensor(label, dtype=torch.float, device=device)
         x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
@@ -33,13 +34,15 @@ def test(args, model, dataset, device):
         data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
         prediction=model(data)
         output=F.cosine_similarity(prediction[0],prediction[1])
-        prediction = torch.sign(output).item()
-        if prediction> float(args.threshold):
+        prediction = output.item()#torch.sign(output).item()
+        # print(f"{prediction}>{args.threshold}?")
+        scores.append(prediction)
+        if prediction > float(args.threshold):
             results.append("clone")#, output.item()]) 
         else:
             results.append("non-clone")#, output.item()]) 
-    return results
-def detect_clones(subject_system, pair_info, args):
+    return results, scores
+def detect_clones(args):
     vocabsize = 58520 #77535
     device=torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     astdict,_,vocabdict=createast(args) #load saved voabdict for original dataset it was trained on (BCB)
@@ -50,11 +53,12 @@ def detect_clones(subject_system, pair_info, args):
     model.load_state_dict(torch.load(args.src_gmn_path, map_location=device))
     model.eval()
 
-    res = test(args, model, testdata, device)
+    res, scores = test(args, model, testdata, device)
     
     import pandas as pd
-    pairs_df = pd.read_csv(pair_info, names=['code1', 'code2'])
+    pairs_df = pd.read_csv(args.pairs, names=['code1', 'code2'])
     pairs_df['prediction'] = pd.Series(res)
+    pairs_df['scores'] = pd.Series(scores)
     res_df = pairs_df
     
     # df_res = pd.DataFrame(res, columns=['item']) #output.item(), add this in test

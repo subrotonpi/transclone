@@ -310,8 +310,8 @@ def convert_systems(args, src, tgt):
     BPE_path = str(Path(__file__).parents[2].joinpath("data/bpe/cpp-java-python/codes"))
     translator = Translator(params.transcoder_path, BPE_path)
            
-    in_dir = project_root+'/storage/systems'
-    out_dir = project_root+'/storage/systems_converted'
+    in_dir = args.subject_system #project_root+'/storage/systems' 
+    out_dir = project_root+'/storage/systems_converted' 
     
     if os.path.exists(out_dir+'transcoder_dataset'):
         print("already have a converted version. Either rename the system or delete the converted version")
@@ -350,7 +350,7 @@ def convert_systems(args, src, tgt):
                     
                 tgt_fpath = tgt_rt + '/' + fsplit[0]+ EXTENSIONS_LOOKUP[params.tgt_lang]
                 print(tgt_fpath)
-                logging.info('CONVERTING --> '+str(file)+' --> '+params.src_lang +' --> '+params.tgt_lang)
+                logging.info('CONVERTING --> '+str(file))
                 
                 if os.path.exists(tgt_fpath):
                     continue
@@ -365,7 +365,7 @@ def convert_systems(args, src, tgt):
                 save_to_file(tgt_fpath, code_)
                 logging.info('SAVING FILE TO-->'+tgt_fpath)                
             except Exception:
-                logging.info('ERROR CONVERTING --> '+str(file)+' --> '+params.src_lang +' --> '+params.tgt_lang)
+                logging.info('ERROR CONVERTING --> '+str(file))
                 save_to_file(tgt_fpath, 'Could not convert. Check original file.')
                 save_to_file(project_root+'/storage/errors.txt', tgt_fpath)
             finally:

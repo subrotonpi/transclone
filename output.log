@@ -1,0 +1,27 @@
+INFO - 09/19/23 05:37:05 - 0:00:00 - Namespace(cuda='False', transcoder_path='', src_lang='python', tgt_lang='java', fragment_to_conv='None', threshold='0', data='/Users/antique/Desktop/transclone/storage/', subject_system='/Users/antique/Desktop/transclone/storage/systems/', root='/Users/antique/Desktop/transclone/', src_gmn_path='/Users/antique/Desktop/transclone/gmn/gmn_srcml_clcdsa.pt', pairs='/Users/antique/Desktop/transclone/storage/pairs.csv', systems_converted='/Users/antique/Desktop/transclone/storage/systems_converted/')
+INFO - 09/19/23 05:37:05 - 0:00:00 - ***saved in /storage/systems_converted***
+INFO - 09/19/23 05:37:05 - 0:00:00 - ****PAIRS SAVED IN-->./storage/pairs.csv****
+INFO - 09/19/23 05:37:05 - 0:00:00 - ***generated Pairs***
+/Users/antique/Desktop/transclone/venv/lib/python3.11/site-packages/torch_geometric/deprecation.py:22: UserWarning: 'nn.glob.GlobalAttention' is deprecated, use 'nn.aggr.AttentionalAggregation' instead
+  warnings.warn(out)
+INFO - 09/19/23 05:37:05 - 0:00:01 - ***saved in: storage/predictions***
+INFO - 09/19/23 05:37:05 - 0:00:01 - Source language:python
+                                     Target language:java
+                                     Threshold:0
+                                     Numnber of clone pairs: 46
+                                     Number of non-clone pairs: 20
+                                     Percentage of clone pairs: 69.6969696969697%
+                                     Percentege of non-clone pairs: 30.303030303030297%
+adding to path /Users/antique/Desktop/transclone
+/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java
+/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java
+/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java

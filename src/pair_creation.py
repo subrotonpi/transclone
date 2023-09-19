@@ -19,7 +19,7 @@ def get_pairs(d= project_root+'/storage/systems_converted'):
     #print("pairs : " + str(res))
     tmp = pd.DataFrame(res)
     tmp.to_csv(project_root+'/storage/pairs.csv', index=False, header=None)
-    logging.info("****PAIRS SAVED IN-->"+project_root+"/pairs.csv****")
+    logging.info("****PAIRS SAVED IN-->"+project_root+"/storage/pairs.csv****")
     return tmp
 def preprocess_files(p):
     get_pairs(p)
