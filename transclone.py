@@ -33,7 +33,7 @@ if os.path.exists(args.systems_converted):
     os.mkdir(args.systems_converted)
 else:
     os.mkdir(args.systems_converted)
-preprocess_system
+# #preprocess_system
 preprocess_system(args, args.src_lang, args.tgt_lang)
 logging.info('***saved in /storage/systems_converted***')
 # #preprocess_files

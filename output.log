@@ -1,26 +1,26 @@
-INFO - 09/19/23 12:23:01 - 0:00:01 - Namespace(cuda='False', transcoder_path='', src_lang='python', tgt_lang='java', fragment_to_conv='None', threshold='0', data='/Users/antique/Desktop/transclone/storage/', subject_system='/Users/antique/Desktop/transclone/storage/systems/', root='/Users/antique/Desktop/transclone/', src_gmn_path='/Users/antique/Desktop/transclone/gmn/gmn_srcml_clcdsa.pt', pairs='/Users/antique/Desktop/transclone/storage/pairs.csv', systems_converted='/Users/antique/Desktop/transclone/storage/systems_converted/')
-INFO - 09/19/23 12:23:05 - 0:00:06 - ============ Model Reloading
-INFO - 09/19/23 12:23:05 - 0:00:06 - Reloading encoder from /Users/antique/Desktop/transclone/storage/pretrained/translator_transcoder_size_from_DOBF.pth ...
-WARNING - 09/19/23 12:23:07 - 0:00:07 - Lang cpp_sa matched to pretrained cpp_sa lang embedding.
-WARNING - 09/19/23 12:23:07 - 0:00:07 - Lang java_sa matched to pretrained java_sa lang embedding.
-WARNING - 09/19/23 12:23:07 - 0:00:07 - Lang python_sa matched to pretrained python_sa lang embedding.
-INFO - 09/19/23 12:23:07 - 0:00:08 - Reloading decoders from /Users/antique/Desktop/transclone/storage/pretrained/translator_transcoder_size_from_DOBF.pth ...
-WARNING - 09/19/23 12:23:09 - 0:00:09 - Lang cpp_sa matched to pretrained cpp_sa lang embedding.
-WARNING - 09/19/23 12:23:09 - 0:00:09 - Lang java_sa matched to pretrained java_sa lang embedding.
-WARNING - 09/19/23 12:23:09 - 0:00:09 - Lang python_sa matched to pretrained python_sa lang embedding.
-INFO - 09/19/23 12:23:09 - 0:00:09 - Number of parameters (encoder): 143279616
-INFO - 09/19/23 12:23:09 - 0:00:09 - Number of parameters (decoders): 168482304
-INFO - 09/19/23 12:23:09 - 0:00:09 - Number of decoders: 1
+INFO - 09/19/23 13:01:23 - 0:00:00 - Namespace(cuda='False', transcoder_path='', src_lang='python', tgt_lang='java', fragment_to_conv='None', threshold='0', data='/Users/antique/Desktop/transclone/storage/', subject_system='/Users/antique/Desktop/transclone/storage/systems/', root='/Users/antique/Desktop/transclone/', src_gmn_path='/Users/antique/Desktop/transclone/gmn/gmn_srcml_clcdsa.pt', pairs='/Users/antique/Desktop/transclone/storage/pairs.csv', systems_converted='/Users/antique/Desktop/transclone/storage/systems_converted/')
+INFO - 09/19/23 13:01:28 - 0:00:05 - ============ Model Reloading
+INFO - 09/19/23 13:01:28 - 0:00:05 - Reloading encoder from /Users/antique/Desktop/transclone/storage/pretrained/translator_transcoder_size_from_DOBF.pth ...
+WARNING - 09/19/23 13:01:29 - 0:00:06 - Lang cpp_sa matched to pretrained cpp_sa lang embedding.
+WARNING - 09/19/23 13:01:29 - 0:00:06 - Lang java_sa matched to pretrained java_sa lang embedding.
+WARNING - 09/19/23 13:01:29 - 0:00:06 - Lang python_sa matched to pretrained python_sa lang embedding.
+INFO - 09/19/23 13:01:29 - 0:00:07 - Reloading decoders from /Users/antique/Desktop/transclone/storage/pretrained/translator_transcoder_size_from_DOBF.pth ...
+WARNING - 09/19/23 13:01:31 - 0:00:08 - Lang cpp_sa matched to pretrained cpp_sa lang embedding.
+WARNING - 09/19/23 13:01:31 - 0:00:08 - Lang java_sa matched to pretrained java_sa lang embedding.
+WARNING - 09/19/23 13:01:31 - 0:00:08 - Lang python_sa matched to pretrained python_sa lang embedding.
+INFO - 09/19/23 13:01:31 - 0:00:08 - Number of parameters (encoder): 143279616
+INFO - 09/19/23 13:01:31 - 0:00:08 - Number of parameters (decoders): 168482304
+INFO - 09/19/23 13:01:31 - 0:00:08 - Number of decoders: 1
 
-INFO - 09/19/23 12:23:09 - 0:00:09 - 
+INFO - 09/19/23 13:01:31 - 0:00:08 - 
                                       Language not supported ******.DS_Store******
-INFO - 09/19/23 12:23:09 - 0:00:09 - **** CONVERTED ALL FILES ****
-INFO - 09/19/23 12:23:09 - 0:00:09 - **** ERRORS ARE SAVED IN: /Users/antique/Desktop/transclone/errors.txt ****
-INFO - 09/19/23 12:23:09 - 0:00:09 - CONVERTING --> 3.java
-INFO - 09/19/23 12:23:09 - 0:00:09 - CONVERTING --> 2.py
+INFO - 09/19/23 13:01:31 - 0:00:08 - **** CONVERTED ALL FILES ****
+INFO - 09/19/23 13:01:31 - 0:00:08 - **** ERRORS ARE SAVED IN: /Users/antique/Desktop/transclone/errors.txt ****
+INFO - 09/19/23 13:01:31 - 0:00:08 - CONVERTING --> 3.java
+INFO - 09/19/23 13:01:31 - 0:00:08 - CONVERTING --> 2.py
 Loading codes from /Users/antique/Desktop/transclone/data/bpe/cpp-java-python/codes ...
 Read 50000 codes from the codes file.
-INFO - 09/19/23 12:23:26 - 0:00:26 - static final Scanner scanner = new Scanner ( System . in ) {
+INFO - 09/19/23 13:01:48 - 0:00:25 - static final Scanner scanner = new Scanner ( System . in ) {
                                        @ Override public void next ( ) {
                                          String l = scanner . nextLine ( ) ;
                                          int n = Integer . parseInt ( l ) ;
@@ -60,12 +60,12 @@ INFO - 09/19/23 12:23:26 - 0:00:26 - static final Scanner scanner = new Scanner 
                                        }
                                      }
                                      
-INFO - 09/19/23 12:23:26 - 0:00:26 - SAVING FILE TO-->/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java
-INFO - 09/19/23 12:23:26 - 0:00:26 - CONVERTING --> 2.java
-INFO - 09/19/23 12:23:26 - 0:00:26 - CONVERTING --> 0.py
+INFO - 09/19/23 13:01:48 - 0:00:25 - SAVING FILE TO-->/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java
+INFO - 09/19/23 13:01:48 - 0:00:25 - CONVERTING --> 2.java
+INFO - 09/19/23 13:01:48 - 0:00:25 - CONVERTING --> 0.py
 Loading codes from /Users/antique/Desktop/transclone/data/bpe/cpp-java-python/codes ...
 Read 50000 codes from the codes file.
-INFO - 09/19/23 12:24:02 - 0:01:02 - static final String cvBase ( int n , int base ) {
+INFO - 09/19/23 13:02:21 - 0:00:58 - static final String cvBase ( int n , int base ) {
                                        final int [ ] arr = new int [ 1 ] ;
                                        while ( n > 0 ) {
                                          arr [ 0 ] = n % base ;
@@ -116,32 +116,32 @@ INFO - 09/19/23 12:24:02 - 0:01:02 - static final String cvBase ( int n , int ba
                                        /* Process all cases */
                                        System . setRecursionDesired ( 1000 * 1000 ) ;
                                        / * ▁
-INFO - 09/19/23 12:24:02 - 0:01:02 - SAVING FILE TO-->/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java
-INFO - 09/19/23 12:24:02 - 0:01:02 - CONVERTING --> 1.java
-INFO - 09/19/23 12:24:02 - 0:01:02 - CONVERTING --> 1.py
-INFO - 09/19/23 12:24:02 - 0:01:02 - CONVERTING --> 0.java
-INFO - 09/19/23 12:24:02 - 0:01:02 - **** CONVERTED ALL FILES ****
-INFO - 09/19/23 12:24:02 - 0:01:02 - **** ERRORS ARE SAVED IN: /Users/antique/Desktop/transclone/errors.txt ****
-INFO - 09/19/23 12:24:02 - 0:01:02 - CONVERTING --> one.py
+INFO - 09/19/23 13:02:21 - 0:00:58 - SAVING FILE TO-->/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java
+INFO - 09/19/23 13:02:21 - 0:00:58 - CONVERTING --> 1.java
+INFO - 09/19/23 13:02:21 - 0:00:58 - CONVERTING --> 1.py
+INFO - 09/19/23 13:02:21 - 0:00:58 - CONVERTING --> 0.java
+INFO - 09/19/23 13:02:21 - 0:00:58 - **** CONVERTED ALL FILES ****
+INFO - 09/19/23 13:02:21 - 0:00:58 - **** ERRORS ARE SAVED IN: /Users/antique/Desktop/transclone/errors.txt ****
+INFO - 09/19/23 13:02:21 - 0:00:58 - CONVERTING --> one.py
 Loading codes from /Users/antique/Desktop/transclone/data/bpe/cpp-java-python/codes ...
 Read 50000 codes from the codes file.
-INFO - 09/19/23 12:24:03 - 0:01:03 - static void print ( "hello world" ) {
+INFO - 09/19/23 13:02:22 - 0:00:59 - static void print ( "hello world" ) {
                                      }
                                      
-INFO - 09/19/23 12:24:03 - 0:01:03 - SAVING FILE TO-->/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java
-INFO - 09/19/23 12:24:03 - 0:01:03 - 
+INFO - 09/19/23 13:02:22 - 0:00:59 - SAVING FILE TO-->/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java
+INFO - 09/19/23 13:02:22 - 0:00:59 - 
                                       Language not supported ******.DS_Store******
-INFO - 09/19/23 12:24:03 - 0:01:03 - CONVERTING --> one.java
-INFO - 09/19/23 12:24:03 - 0:01:03 - CONVERTING --> one_test.java
-INFO - 09/19/23 12:24:03 - 0:01:03 - CONVERTING --> one_test.py
-INFO - 09/19/23 12:24:03 - 0:01:03 - **** CONVERTED ALL FILES ****
-INFO - 09/19/23 12:24:03 - 0:01:03 - **** ERRORS ARE SAVED IN: /Users/antique/Desktop/transclone/errors.txt ****
-INFO - 09/19/23 12:24:03 - 0:01:03 - CONVERTING --> 4905607.java
-INFO - 09/19/23 12:24:03 - 0:01:03 - CONVERTING --> 4905607.py
-INFO - 09/19/23 12:24:03 - 0:01:03 - CONVERTING --> 4904274.py
+INFO - 09/19/23 13:02:22 - 0:00:59 - CONVERTING --> one.java
+INFO - 09/19/23 13:02:22 - 0:00:59 - CONVERTING --> one_test.java
+INFO - 09/19/23 13:02:22 - 0:00:59 - CONVERTING --> one_test.py
+INFO - 09/19/23 13:02:22 - 0:00:59 - **** CONVERTED ALL FILES ****
+INFO - 09/19/23 13:02:22 - 0:00:59 - **** ERRORS ARE SAVED IN: /Users/antique/Desktop/transclone/errors.txt ****
+INFO - 09/19/23 13:02:22 - 0:00:59 - CONVERTING --> 4905607.java
+INFO - 09/19/23 13:02:22 - 0:00:59 - CONVERTING --> 4905607.py
+INFO - 09/19/23 13:02:22 - 0:00:59 - CONVERTING --> 4904274.py
 Loading codes from /Users/antique/Desktop/transclone/data/bpe/cpp-java-python/codes ...
 Read 50000 codes from the codes file.
-INFO - 09/19/23 12:24:10 - 0:01:10 - ) public static void main ( String n , String x ) {
+INFO - 09/19/23 13:02:29 - 0:01:06 - ) public static void main ( String n , String x ) {
                                        int [ ] a = new int [ n ] ;
                                        for ( int i = 0 ;
                                        i < n ;
@@ -158,28 +158,28 @@ INFO - 09/19/23 12:24:10 - 0:01:10 - ) public static void main ( String n , Stri
                                        System . out . println ( price ) ;
                                      }
                                      
-INFO - 09/19/23 12:24:10 - 0:01:10 - SAVING FILE TO-->/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java
-INFO - 09/19/23 12:24:10 - 0:01:10 - CONVERTING --> 3326588.java
-INFO - 09/19/23 12:24:10 - 0:01:10 - CONVERTING --> 4903884.java
-INFO - 09/19/23 12:24:10 - 0:01:10 - CONVERTING --> 3430290.java
-INFO - 09/19/23 12:24:10 - 0:01:10 - CONVERTING --> 3446938.java
-INFO - 09/19/23 12:24:10 - 0:01:10 - CONVERTING --> 4903884.py
-INFO - 09/19/23 12:24:10 - 0:01:10 - CONVERTING --> 4904274.java
-INFO - 09/19/23 12:24:10 - 0:01:10 - **** CONVERTED ALL FILES ****
-INFO - 09/19/23 12:24:10 - 0:01:10 - **** ERRORS ARE SAVED IN: /Users/antique/Desktop/transclone/errors.txt ****
-INFO - 09/19/23 12:24:10 - 0:01:10 - ***saved in /storage/systems_converted***
-INFO - 09/19/23 12:24:10 - 0:01:10 - ****PAIRS SAVED IN-->./storage/pairs.csv****
-INFO - 09/19/23 12:24:10 - 0:01:10 - ***generated Pairs***
+INFO - 09/19/23 13:02:29 - 0:01:06 - SAVING FILE TO-->/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java
+INFO - 09/19/23 13:02:29 - 0:01:06 - CONVERTING --> 3326588.java
+INFO - 09/19/23 13:02:29 - 0:01:06 - CONVERTING --> 4903884.java
+INFO - 09/19/23 13:02:29 - 0:01:06 - CONVERTING --> 3430290.java
+INFO - 09/19/23 13:02:29 - 0:01:06 - CONVERTING --> 3446938.java
+INFO - 09/19/23 13:02:29 - 0:01:06 - CONVERTING --> 4903884.py
+INFO - 09/19/23 13:02:29 - 0:01:06 - CONVERTING --> 4904274.java
+INFO - 09/19/23 13:02:29 - 0:01:06 - **** CONVERTED ALL FILES ****
+INFO - 09/19/23 13:02:29 - 0:01:06 - **** ERRORS ARE SAVED IN: /Users/antique/Desktop/transclone/errors.txt ****
+INFO - 09/19/23 13:02:29 - 0:01:06 - ***saved in /storage/systems_converted***
+INFO - 09/19/23 13:02:29 - 0:01:06 - ****PAIRS SAVED IN-->./storage/pairs.csv****
+INFO - 09/19/23 13:02:29 - 0:01:06 - ***generated Pairs***
 /Users/antique/Desktop/transclone/venv/lib/python3.11/site-packages/torch_geometric/deprecation.py:22: UserWarning: 'nn.glob.GlobalAttention' is deprecated, use 'nn.aggr.AttentionalAggregation' instead
   warnings.warn(out)
-INFO - 09/19/23 12:24:11 - 0:01:11 - ***saved in: storage/predictions***
-INFO - 09/19/23 12:24:11 - 0:01:11 - Source language:python
+INFO - 09/19/23 13:02:30 - 0:01:07 - ***saved in: storage/predictions***
+INFO - 09/19/23 13:02:30 - 0:01:07 - Source language:python
                                      Target language:java
                                      Threshold:0
                                      Numnber of clone pairs: 46
                                      Number of non-clone pairs: 20
-                                     Percentage of clone pairs: 69.6969696969697%
-                                     Percentege of non-clone pairs: 30.303030303030297%
+                                     Percentage of clone pairs: 69.69999999999999%
+                                     Percentege of non-clone pairs: 30.3%
 adding to path /Users/antique/Desktop/transclone
 /Users/antique/Desktop/transclone
 /Users/antique/Desktop/transclone/storage/systems/
@@ -214,15 +214,15 @@ Tokenized python_sa function:
 /Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java
 /Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java
 /Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java
-/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java
 /Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one.java
-/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java
-/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java
-/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java
-/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java
-/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java
-/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java
-/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java
 /Users/antique/Desktop/transclone/storage/systems_converted/data_2/3326588.java
-/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4905607.java
 /Users/antique/Desktop/transclone/storage/systems_converted/data_2/4903884.java
+/Users/antique/Desktop/transclone/storage/systems_converted/test_dir/one_test.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3430290.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_2/4904274.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_1/3.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_1/0.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_1/1.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_1/2.java
+/Users/antique/Desktop/transclone/storage/systems_converted/data_2/3446938.java

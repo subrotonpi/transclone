@@ -349,7 +349,7 @@ def convert_systems(args, src, tgt):
                     
                     
                 tgt_fpath = tgt_rt + '/' + fsplit[0]+ EXTENSIONS_LOOKUP[params.tgt_lang]
-                print(tgt_fpath)
+                # print(tgt_fpath)
                 logging.info('CONVERTING --> '+str(file))
                 
                 if os.path.exists(tgt_fpath):
