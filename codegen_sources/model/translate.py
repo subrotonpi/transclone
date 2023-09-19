@@ -346,8 +346,6 @@ def convert_systems(args, src, tgt):
                 if not os.path.exists(tgt_rt):
                     os.makedirs(tgt_rt)
                     
-                    
-                    
                 tgt_fpath = tgt_rt + '/' + fsplit[0]+ EXTENSIONS_LOOKUP[params.tgt_lang]
                 # print(tgt_fpath)
                 logging.info('CONVERTING --> '+str(file))
