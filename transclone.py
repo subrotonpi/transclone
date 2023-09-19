@@ -27,16 +27,16 @@ args = parser.parse_args()
 args.systems_converted = args.root+'storage/systems_converted/'
 logging.info(args)
 
-#remove systems_converted content or create the folder
-# if os.path.exists(args.systems_converted):
-#     shutil.rmtree(args.systems_converted)
-#     os.mkdir(args.systems_converted)
-# else:
-#     os.mkdir(args.systems_converted)
-#preprocess_system
-# preprocess_system(args, args.src_lang, args.tgt_lang)
+# #remove systems_converted content or create the folder
+if os.path.exists(args.systems_converted):
+    shutil.rmtree(args.systems_converted)
+    os.mkdir(args.systems_converted)
+else:
+    os.mkdir(args.systems_converted)
+preprocess_system
+preprocess_system(args, args.src_lang, args.tgt_lang)
 logging.info('***saved in /storage/systems_converted***')
-#preprocess_files
+# #preprocess_files
 pairs = preprocess_files(args.systems_converted)
 logging.info('***generated Pairs***')
 #detect_clones
