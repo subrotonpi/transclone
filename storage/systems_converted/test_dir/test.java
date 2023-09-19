@@ -1,2 +1,2 @@
-static void print ( "hey" ) {
+static void print ( "hello world" ) {
 }

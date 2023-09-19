@@ -1,4 +1,2 @@
-static void a ( int a ) {
-  a = 10 ;
-  b = 20 ;
+static void print ( "hello world" ) {
 }

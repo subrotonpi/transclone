@@ -130,11 +130,9 @@ def createast(args):
     fragments = list(set(df.c1).union(set(df.c2)))
     for fragment_path in fragments:
         print(fragment_path)
-        programfile=open(fragment_path,encoding='utf-8')
-            #print(os.path.join(rt,file))
-        programtext=programfile.read()
-            #programtext=programtext.replace('\r','')
         try:
+            programfile=open(fragment_path,encoding='utf-8')
+            programtext=programfile.read()
             programtokens=javalang.tokenizer.tokenize(programtext)
             parser=javalang.parse.Parser(programtokens)
             programast=parser.parse_member_declaration()

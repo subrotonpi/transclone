@@ -35,9 +35,9 @@ def test(args, model, dataset, device):
         output=F.cosine_similarity(prediction[0],prediction[1])
         prediction = torch.sign(output).item()
         if prediction> float(args.threshold):
-            results.append([1])#, output.item()]) 
+            results.append("clone")#, output.item()]) 
         else:
-            results.append([0])#, output.item()]) 
+            results.append("non-clone")#, output.item()]) 
     return results
 def detect_clones(subject_system, pair_info, args):
     vocabsize = 58520 #77535
@@ -47,7 +47,7 @@ def detect_clones(subject_system, pair_info, args):
     testdata=creategmndata(args, 0,treedict,vocabsize,vocabdict,device) #58520 #77535
     num_layers= 4#int(args.num_layers)
     model=gmn.models.GMNnet(vocablen=vocabsize,embedding_dim=100,num_layers=num_layers,device=device).to(device)
-    model.load_state_dict(torch.load(args.model_path, map_location=device))
+    model.load_state_dict(torch.load(args.src_gmn_path, map_location=device))
     model.eval()
 
     res = test(args, model, testdata, device)

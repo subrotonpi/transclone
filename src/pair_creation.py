@@ -5,15 +5,16 @@ import logging
 import os
 from pathlib import Path
 project_root =str(Path())
-
+FILE_EXTENSIONS=['java', 'py']
 def get_pairs(d= project_root+'/storage/systems_converted'):
     x = []
     for (rt, dr, files) in os.walk(d, topdown=True):
             for file in files:
-                tmp = os.path.join(rt, file)
-                #print(tmp[1:])
-                x.append(tmp[:])
-                #print(x)
+                if file.split('.')[-1] in FILE_EXTENSIONS:
+                    tmp = os.path.join(rt, file)
+                    #print(tmp[1:])
+                    x.append(tmp[:])
+                    #print(x)
     res = list(combinations(x, 2))
     #print("pairs : " + str(res))
     tmp = pd.DataFrame(res)

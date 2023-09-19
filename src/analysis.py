@@ -3,7 +3,7 @@ import pandas as pd
 def analyze_predictions(args, res):
     # res = pd.read_csv("predictions.csv")
     data = {}
-    t = len(res[res["prediction"]==1])
+    t = len(res[res["prediction"]=="clone"])
     f = res.shape[0] - t
     t_per = t/res.shape[0]
     f_per = 1-t_per

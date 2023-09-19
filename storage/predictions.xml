@@ -1,2 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<data/>
+<data>
+  <row>
+    <code1>/Users/antique/Desktop/transclone/storage/systems/test_dir/one.py</code1>
+    <code2>/Users/antique/Desktop/transclone/storage/systems/test_dir/test.py</code2>
+    <prediction>clone</prediction>
+  </row>
+</data>
