@@ -10,9 +10,8 @@ Code for paper, "TransClone: A Language Agnostic Code Clone Detector", IWSC 2023
 
 ### Run the following script to set up the dependencies
 
-```
-setup.sh
-```
+
+[setup.sh](setup.sh)
 
 ### To run the tool
 
