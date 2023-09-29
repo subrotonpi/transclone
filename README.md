@@ -8,14 +8,10 @@ Code for paper, "TransClone: A Language Agnostic Code Clone Detector", IWSC 2023
 - It works on CPU only machines too, however, GPU is preffered.
 - It currently supports Java and Python.
 
-### Run the following to set up the dependencies
+### Run the following script to set up the dependencies
 
 ```
-setup.sh 
-srcml_dep.sh
-
-cd /usr/lib/x86_64-linux-gnu/
-sudo ln -s libclang-10.so.1 libclang-14.so
+setup.sh
 ```
 
 ### To run the tool
