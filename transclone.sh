@@ -14,7 +14,7 @@ python3 transclone.py \
     --transcoder_path "" \
     --src_lang python \
     --tgt_lang java \
-    --fragment_to_conv None \
+    --fragment_to_conv "" \
     --threshold 0 \
     --data $PROJECT_ROOT/storage/ \
     --subject_system $PROJECT_ROOT/storage/systems/ \
