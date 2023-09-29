@@ -8,7 +8,7 @@ Code for paper, "TransClone: A Language Agnostic Code Clone Detector", IWSC 2023
 - It works on CPU only machines too, however, GPU is preffered.
 - It currently supports Java and Python.
 
-### To setup TransClone, run [setup.sh](setup.sh)
+### To setup all dependencies, run [setup.sh](setup.sh)
 
 ### To run the tool
 
