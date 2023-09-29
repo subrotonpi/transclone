@@ -1,4 +1,6 @@
 #!/bin/bash
+source venv/bin/activate
+
 PROJECT_ROOT=$PWD
 # Function to display script usage
 function display_usage() {
