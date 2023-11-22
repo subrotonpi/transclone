@@ -51,13 +51,13 @@ def preprocess_system(subject_system, args):
     # print(py_to_java)
     return pd.concat([functions_java, py_to_java])
     
-files = preprocess_system(args.subject_system, args)
-logging.info('***transcoder phase done***')
+# files = preprocess_system(args.subject_system, args)
+# logging.info('***transcoder phase done***')
 
-# # #preprocess_files
-# pairs = preprocess_files(args.systems_converted) #directory
-pairs = preprocess_files(files) #functions
-logging.info('***generated pairs***')
+# # # #preprocess_files
+# # pairs = preprocess_files(args.systems_converted) #directory
+# pairs = preprocess_files(files) #functions
+# logging.info('***generated pairs***')
 # #detect_clones
 _, res_df = detect_clones(args)
 logging.info('***saved in: storage/predictions***')
@@ -65,6 +65,9 @@ logging.info('***saved in: storage/predictions***')
 # # print(res_df.head())
 _, fstring = analyze_predictions(args, res_df)
 logging.info(fstring)
+with open("brief_result", 'w') as file:
+    # Write the string to the file
+    file.write(fstring)
 
 
 # /Path/to/File1.java,5,10,/Path/to/File2,20,25\

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="Java" filename="/Users/antique/Desktop/transclone/storage/temp/temp_g1.java"><function><type><specifier>public</specifier> <specifier>static</specifier> <name>double</name></type> <name>random</name> <parameter_list>( <parameter><decl><type><name>double</name></type> <name>a</name></decl></parameter> )</parameter_list> <block>{<block_content>
+  <block>{<block_content>
+    <return>return <expr><name>a</name> <operator>*</operator> <name>a</name></expr> ;</return>
+  </block_content>}</block>
+  <return>return <expr><name>a</name></expr> ;</return>
+</block_content>}</block></function>
+</unit>
