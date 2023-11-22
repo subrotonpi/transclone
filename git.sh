@@ -1,4 +1,5 @@
+msg=$1
 git pull
 git add .
-git commit -m "nicad function extraction updated"
+git commit -m $msg
 git push
