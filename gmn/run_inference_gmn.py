@@ -98,10 +98,11 @@ def for_muttion_framework(args, res_df):
             # /Path/to/File1.java,5,10,/Path/to/File2,20,25\
             tmp = f"{f1}, {s1}, {e1}, {f2}, {s2}, {e2}\n"
             x += tmp
-    print(x)
-    with open("mutation_formatted", 'w') as file:
+    wp = f"{args.data}/mutation_formatted.txt"
+    with open(wp, 'w') as file:
         # Write the string to the file
         file.write(x)    
+    print(wp)
     
             
         

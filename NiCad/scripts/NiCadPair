@@ -13,7 +13,7 @@ usage() {
 }
 
 echo ""
-echo "Function extraction using NiCad Clone Detector v6.2 (13.11.20)"
+echo "NiCad Clone Detector v6.2 (13.11.20)"
 echo ""
 
 # check we have TXL
@@ -137,7 +137,6 @@ then
     echo > "${system}_${granularity}-clones-${datestamp}.log" 2>&1
 else
     echo "Extracting ${granularity} from ${language} files in ${system}"
-    
     time ${lib}/scripts/Extract ${granularity} ${language} "${system}" "${include}" "${exclude}" > "${system}_${granularity}-clones-${datestamp}.log" 2>&1
 fi
 
@@ -172,6 +171,8 @@ echo ""
 
 pcfile="${system}_${granularity}"
 
+echo "function extraction done..."
+exit
 # Check for transforming to be done
 if [ "${transform}" != none ]
 then
@@ -196,8 +197,7 @@ then
 
     pcfile="${pcfile}-${transform}"
 fi
-echo "done...function extractions"
-exit 
+
 # Check for renaming to be done
 if [ "${rename}" != none ]
 then
@@ -297,7 +297,6 @@ then
 
     pcfile="${pcfile}-normalized"
 fi
-
 
 # Find near-miss clones
 echo "Finding clones between ${minsize} and ${maxsize} lines at UPI threshold ${threshold}"

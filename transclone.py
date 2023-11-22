@@ -45,20 +45,24 @@ def preprocess_system(subject_system, args):
     functions_py = get_all_functions(f"{args.data}/{sys_name}_functions_py.xml")
     # print(functions_java.columns) 
     functions_java.to_csv(f"{args.data}/functions_java.csv", index=False)
-    py_to_java =  preprocess_system_translate(args, functions_py)
-    py_to_java.to_csv(f"{args.data}/py_to_java.csv", index=False)
+
+    has_py = True if len(functions_py)>0 else False
+    if has_py:
+        py_to_java =  preprocess_system_translate(args, functions_py)
+        py_to_java.to_csv(f"{args.data}/py_to_java.csv", index=False)
+    
     functions_py.to_csv(f"{args.data}/functions_py.csv", index=False)
     # print(py_to_java)
-    return pd.concat([functions_java, py_to_java])
+    return pd.concat([functions_java, py_to_java]) if has_py else functions_java
     
-# files = preprocess_system(args.subject_system, args)
-# logging.info('***transcoder phase done***')
+files = preprocess_system(args.subject_system, args)
+logging.info('***transcoder phase done***')
 
-# # # #preprocess_files
-# # pairs = preprocess_files(args.systems_converted) #directory
-# pairs = preprocess_files(files) #functions
-# logging.info('***generated pairs***')
-# #detect_clones
+# # #preprocess_files
+# pairs = preprocess_files(args.systems_converted) #directory
+pairs = preprocess_files(files) #functions
+logging.info('***generated pairs***')
+#detect_clones
 _, res_df = detect_clones(args)
 logging.info('***saved in: storage/predictions***')
 # #analyze_predictions

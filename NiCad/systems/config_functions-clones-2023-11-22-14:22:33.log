@@ -1,0 +1,67 @@
+Wed 22 Nov 2023 02:22:33 PM CST
+./txl/py-extract-functions.x ALL.py >> systems/config_functions.xml
+
+Wed 22 Nov 2023 02:22:33 PM CST
+
+Wed 22 Nov 2023 02:22:33 PM CST
+./tools/clonepairs.x systems/config_functions-blind.xml 0.30 10 2500 > systems/config_functions-blind-clones/config_functions-blind-clones-0.30.xml
+Processing systems/config_functions-blind.xml with difference threshold 30%, clone size 10 .. 2500 lines
+Reading pcs . done.
+Total 76/6000000 potential clones of 10 lines or more
+Used 297/100000000 total pc lines
+Used 11737/600000000 unique line text chars
+ and 304/12000000 unique lines
+Sorting pcs . done.
+Finding clones  done.
+Total 48 pc comparisons
+Pruning embedded clone pairs . done.
+Pruned 0 embedded clone pairs
+Found 0 clone pairs
+Generating XML output  done.
+
+
+real	0m0.013s
+user	0m0.000s
+sys	0m0.013s
+
+Wed 22 Nov 2023 02:22:33 PM CST
+
+Wed 22 Nov 2023 02:22:33 PM CST
+./tools/cloneclasses.x systems/config_functions-blind-clones/config_functions-blind-clones-0.30.xml > systems/config_functions-blind-clones/config_functions-blind-clones-0.30-classes.xml
+Processing systems/config_functions-blind-clones/config_functions-blind-clones-0.30.xml
+Reading clone pairs . done.
+Total 0 pairs
+Sorting pairs . done.
+Indexing pairs  done.
+Computing classes  done.
+Clustered clone pairs into 0 classes
+Generating XML output  done.
+
+
+real	0m0.020s
+user	0m0.000s
+sys	0m0.020s
+
+Wed 22 Nov 2023 02:22:33 PM CST
+
+Wed 22 Nov 2023 02:22:33 PM CST
+./tools/getsource.x systems/config_functions-blind-clones/config_functions-blind-clones-0.30-classes.xml systems/config_functions-blind-clones/config_functions-blind-clones-0.30-classes-withsource.xml
+systems/config_functions-blind-clones/config_functions-blind-clones-0.30-classes.xml
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+Wed 22 Nov 2023 02:22:33 PM CST
+
+Wed 22 Nov 2023 02:22:33 PM CST
+./tools/tohtmlpairs.x systems/config_functions-blind-clones/config_functions-blind-clones-0.30-classes-withsource.xml systems/config_functions-blind-clones/config_functions-blind-clones-0.30-classes-withsource.html
+functions-blind
+30%
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+Wed 22 Nov 2023 02:22:33 PM CST
+

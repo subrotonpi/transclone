@@ -1,4 +1,33 @@
 file_path,code,start,end
+systems/config/FavoritesConfig.java,"
+public FavoritesConfig (Preferences preferences) {
+    super (preferences, ""favorites"");
+}
+",20,23
+systems/config/FavoritesConfig.java,"
+public void add (String key, FeederCreator feederCreator) {
+    StringBuilder serializedFeeder = new StringBuilder (feederCreator.getFeederId ());
+    serializedFeeder.append ('\t');
+    for (String part : feederCreator.serialize ()) {
+        serializedFeeder.append (part).append ("":::"");
+    }
+    super.add (key, serializedFeeder.toString ());
+}
+",25,34
+systems/config/FavoritesConfig.java,"
+public String getFeederId (String key) {
+    String value = get (key);
+    int indexOf = value.indexOf ('\t');
+    return value.substring (0, indexOf);
+}
+",36,41
+systems/config/FavoritesConfig.java,"
+public String [] getSerializedParts (String key) {
+    String value = get (key);
+    int indexOf = value.indexOf ('\t');
+    return value.substring (indexOf + 1).split ("":::"");
+}
+",43,48
 systems/config/NamedListConfig.java,"
 NamedListConfig (Preferences preferences, String preferenceName) {
     this.preferenceName = preferenceName;
@@ -71,99 +100,272 @@ public void update (String [] keys) {
     namedList = newList;
 }
 ",124,133
-systems/config/ConfigDetector.java,"
-public ConfigDetector (ScannerConfig config) {
-    this.config = config;
+systems/config/CommentsConfig.java,"
+public CommentsConfig (Preferences preferences) {
+    this.preferences = preferences.node (""comments"");
 }
-",37,40
-systems/config/ConfigDetector.java,"
-public void setCallback (DetectorCallback callback) {
-    this.callback = callback;
+",21,25
+systems/config/CommentsConfig.java,"
+public String getComment (InetAddress address) {
+    return preferences.get (address.getHostAddress (), null);
 }
-",42,45
-systems/config/ConfigDetector.java,"
-public void detectMaxThreads (InetSocketAddress socketAddress) {
-    logger = LoggerFactory.getLogger ();
-    expectedConnects = new AtomicInteger ();
-    actualConnects = new AtomicInteger ();
-    List < Thread > threads = new LinkedList < Thread > ();
-    for (int i = 0; i < config.maxThreads; i ++) {
-        Thread t = new SocketThread (socketAddress);
-        threads.add (t);
-        t.start ();
+",27,30
+systems/config/CommentsConfig.java,"
+public void setComment (InetAddress address, String comment) {
+    if (comment == null || comment.length () == 0) preferences.remove (address.getHostAddress ());
+    else preferences.put (address.getHostAddress (), comment);
+}
+",32,38
+systems/config/Labels.java,"
+private Labels () {
+}
+",41,44
+systems/config/Labels.java,"
+public static final Labels getInstance () {
+    return instance;
+}
+",46,49
+systems/config/Labels.java,"
+public static void initialize (Locale locale) {
+    if (instance != null && locale.equals (instance.locale)) {
+        return;
     }
-    join (threads);
-}
-",47,65
-systems/config/ConfigDetector.java,"
-private void join (List < Thread > threads) {
+    instance = new Labels ();
+    instance.locale = locale;
+    InputStream labelsStream = null;
     try {
-        for (Thread t : threads) {
-            t.join ();
+        labelsStream = Labels.class.getClassLoader ().getResourceAsStream (""messages.properties"");
+        if (labelsStream == null) {
+            throw new MissingResourceException (""Labels not found!"", Labels.class.getName (), ""messages"");
         }
-        threads.clear ();
-    } catch (InterruptedException e) {
+        instance.labelsFallback = new PropertyResourceBundle (labelsStream);
+        labelsStream.close ();
+    } catch (IOException e) {
+        throw new MissingResourceException (e.toString (), Labels.class.getName (), ""messages"");
+    }
+    try {
+        labelsStream = Labels.class.getClassLoader ().getResourceAsStream (""messages_"" + locale.getLanguage () + "".properties"");
+        instance.labels = new PropertyResourceBundle (labelsStream);
+        labelsStream.close ();
+    } catch (Exception e) {
+        instance.labels = instance.labelsFallback;
     }
 }
-",67,80
-systems/config/ConfigDetector.java,"
-public int getInitialConnectCount () {
-    return config.maxThreads * CONNECTS_PER_THREAD;
+",56,95
+systems/config/Labels.java,"
+public InputStream getImageAsStream (String key) {
+    String imagePath = get (key);
+    return getClass ().getClassLoader ().getResourceAsStream (imagePath);
 }
-",82,85
-systems/config/ConfigDetector.java,"
-public int getInitialSuccessCount () {
-    return (int) (getInitialConnectCount () * SUCCESS_PROBABILITY);
+",101,105
+systems/config/Labels.java,"
+public String get (String key) {
+    try {
+        return labels.getString (key);
+    } catch (MissingResourceException e) {
+        String text = labelsFallback.getString (key);
+        LOG.warning (""Used fallback label for "" + key);
+        return text;
+    }
 }
-",87,90
-systems/config/ConfigDetector.java,"
-public int getExpectedSuccessfulConnectCount () {
-    return expectedConnects.intValue ();
+",111,123
+systems/config/Labels.java,"
+public static String getLabel (String key) {
+    return getInstance ().get (key);
+}
+",128,131
+systems/config/OpenersConfig.java,"
+public OpenersConfig (Preferences preferences) {
+    super (preferences, ""openers"");
+    if (size () == 0) {
+        Labels labels = Labels.getInstance ();
+        if (Platform.WINDOWS) add (labels.get (""opener.netbios""), new Opener (""\\\\${fetcher.ip}"", false, null));
+        add (labels.get (""opener.web""), new Opener (""http://${fetcher.hostname}/"", false, null));
+        add (labels.get (""opener.ftp""), new Opener (""ftp://${fetcher.hostname}/"", false, null));
+        add (labels.get (""opener.telnet""), new Opener (""telnet ${fetcher.ip}"", true, null));
+        add (labels.get (""opener.ping""), new Opener (""ping ${fetcher.ip}"", true, null));
+        add (labels.get (""opener.traceroute""), new Opener ((Platform.WINDOWS ? ""tracert"" : Platform.LINUX ? ""tracepath"" : ""traceroute"") + "" ${fetcher.ip}"", true, null));
+        if (! Platform.WINDOWS) add (labels.get (""opener.ssh""), new Opener (""ssh ${fetcher.ip}"", true, null));
+        if (! Platform.WINDOWS) add (labels.get (""opener.whois""), new Opener (""whois ${fetcher.ip}"", true, null));
+        add (labels.get (""opener.geolocate""), new Opener (""http://www.angryip.org/iplocate.php?ip=${fetcher.ip}"", false, null));
+        add (labels.get (""opener.email""), new Opener (""mailto:somebody@example.com?subject=${fetcher.ip} (${fetcher.hostname})"", true, null));
+    }
+}
+",22,41
+systems/config/OpenersConfig.java,"
+Object serializeValue (String value) {
+    return new Opener (value);
+}
+",43,46
+systems/config/OpenersConfig.java,"
+public void add (String name, Object value) {
+    if (value instanceof Opener) super.add (name, value);
+    else throw new IllegalArgumentException ();
+}
+",48,55
+systems/config/OpenersConfig.java,"
+public Opener getOpener (String name) {
+    return (Opener) namedList.get (name);
+}
+",57,60
+systems/config/OpenersConfig.java,"
+Opener (String serialized) {
+    try {
+        String [] parts = serialized.split (""@@@"");
+        execString = parts [0];
+        inTerminal = parts [1].charAt (0) == '1';
+        workingDir = parts.length >= 3 && parts [2].length () > 0 ? new File (parts [2]) : null;
+    } catch (ArrayIndexOutOfBoundsException e) {
+        LOG.fine (""Broken opener config read: "" + serialized);
+    }
+}
+",68,82
+systems/config/OpenersConfig.java,"
+public Opener (String execString, boolean inTerminal, File workingDir) {
+    this.execString = execString;
+    this.inTerminal = inTerminal;
+    this.workingDir = workingDir;
+}
+",84,89
+systems/config/OpenersConfig.java,"
+public String toString () {
+    return execString + ""@@@"" + (inTerminal ? '1' : '0') + ""@@@"" + (workingDir != null ? workingDir.toString () : """");
+}
+",91,94
+systems/config/LoggerFactory.java,"
+public static Logger getLogger () {
+    Throwable t = new Throwable ();
+    StackTraceElement directCaller = t.getStackTrace () [1];
+    return Logger.getLogger (directCaller.getClassName ());
+}
+",21,26
+systems/config/ScannerConfig.java,"
+ScannerConfig (Preferences preferences) {
+    this.preferences = preferences;
+    maxThreads = preferences.getInt (""maxThreads"", Platform.CRIPPLED_WINDOWS ? 10 : 100);
+    threadDelay = preferences.getInt (""threadDelay"", 20);
+    scanDeadHosts = preferences.getBoolean (""scanDeadHosts"", false);
+    selectedPinger = preferences.get (""selectedPinger"", Platform.WINDOWS && ! Platform.ARCH_64 ? ""pinger.windows"" : ""pinger.icmp"");
+    pingTimeout = preferences.getInt (""pingTimeout"", 2000);
+    pingCount = preferences.getInt (""pingCount"", 3);
+    skipBroadcastAddresses = preferences.getBoolean (""skipBroadcastAddresses"", true);
+    portTimeout = preferences.getInt (""portTimeout"", 2000);
+    adaptPortTimeout = preferences.getBoolean (""adaptPortTimeout"", ! Platform.CRIPPLED_WINDOWS);
+    minPortTimeout = preferences.getInt (""minPortTimeout"", 100);
+    portString = preferences.get (""portString"", """");
+    useRequestedPorts = preferences.getBoolean (""useRequestedPorts"", true);
+    notAvailableText = preferences.get (""notAvailableText"", Labels.getLabel (""fetcher.value.notAvailable""));
+    notScannedText = preferences.get (""notScannedText"", Labels.getLabel (""fetcher.value.notScanned""));
+}
+",40,58
+systems/config/ScannerConfig.java,"
+public void store () {
+    preferences.putInt (""maxThreads"", maxThreads);
+    preferences.putInt (""threadDelay"", threadDelay);
+    preferences.putBoolean (""scanDeadHosts"", scanDeadHosts);
+    preferences.put (""selectedPinger"", selectedPinger);
+    preferences.putInt (""pingTimeout"", pingTimeout);
+    preferences.putInt (""pingCount"", pingCount);
+    preferences.putBoolean (""skipBroadcastAddresses"", skipBroadcastAddresses);
+    preferences.putInt (""portTimeout"", portTimeout);
+    preferences.putBoolean (""adaptPortTimeout"", adaptPortTimeout);
+    preferences.putInt (""minPortTimeout"", minPortTimeout);
+    preferences.put (""portString"", portString);
+    preferences.putBoolean (""useRequestedPorts"", useRequestedPorts);
+    preferences.put (""notAvailableText"", notAvailableText);
+    preferences.put (""notScannedText"", notScannedText);
+}
+",63,79
+systems/config/Config.java,"
+private Config () {
+    preferences = Preferences.userRoot ().node (""ipscan"");
+    scannerConfig = new ScannerConfig (preferences);
+    guiConfig = new GUIConfig (preferences);
+    favoritesConfig = new FavoritesConfig (preferences);
+    openersConfig = new OpenersConfig (preferences);
+}
+",31,38
+systems/config/Config.java,"
+public static Config getConfig () {
+    if (globalConfig == null) {
+        globalConfig = new Config ();
+    }
+    return globalConfig;
+}
+",43,50
+systems/config/Config.java,"
+public void store () {
+    scannerConfig.store ();
+    guiConfig.store ();
+    favoritesConfig.store ();
+    openersConfig.store ();
+}
+",52,58
+systems/config/Config.java,"
+public Preferences getPreferences () {
+    return preferences;
+}
+",60,63
+systems/config/Config.java,"
+public ScannerConfig forScanner () {
+    return scannerConfig;
+}
+",68,71
+systems/config/Config.java,"
+NamedListConfig forFavorites () {
+    return favoritesConfig;
+}
+",76,79
+systems/config/Config.java,"
+OpenersConfig forOpeners () {
+    return openersConfig;
+}
+",84,87
+systems/config/Config.java,"
+public GUIConfig forGUI () {
+    return guiConfig;
 }
 ",92,95
-systems/config/ConfigDetector.java,"
-public int getActualSuccessfulConnectCount () {
-    return actualConnects.intValue ();
+systems/config/Version.java,"
+public static String getVersion () {
+    if (version == null) {
+        loadVersionFromJar ();
+    }
+    return version;
 }
-",97,100
-systems/config/ConfigDetector.java,"
-public SocketThread (InetSocketAddress socketAddress) {
-    this.socketAddress = socketAddress;
+",44,51
+systems/config/Version.java,"
+public static String getBuildDate () {
+    if (buildDate == null) {
+        loadVersionFromJar ();
+    }
+    return buildDate;
 }
-",112,115
-systems/config/ConfigDetector.java,"
-public void run () {
-    for (int i = 0; i < CONNECTS_PER_THREAD; i ++) {
-        if (callback != null) callback.onDetectorTry ();
-        Socket s = new Socket ();
+",56,63
+systems/config/Version.java,"
+private static void loadVersionFromJar () {
+    String path = Version.class.getClassLoader ().getResource (Version.class.getName ().replace ('.', '/') + "".class"").toString ();
+    if (path.startsWith (""jar:file:"")) {
+        path = path.substring (4, path.indexOf ('!'));
         try {
-            s.setSoTimeout (config.portTimeout);
-            s.setTcpNoDelay (true);
-            s.setSoLinger (true, 0);
-            if (Math.random () > (1.0 - SUCCESS_PROBABILITY)) {
-                expectedConnects.incrementAndGet ();
-                s.connect (socketAddress, config.portTimeout);
-            }
-            else {
-                s.connect (new InetSocketAddress (InetAddress.getByAddress (new byte [] {(byte) 192, (byte) 168, (byte) (Math.random () * 255), (byte) (Math.random () * 255)}), 61493 + (int) (Math.random () * 200)), config.portTimeout);
-            }
-            actualConnects.incrementAndGet ();
-            if (callback != null) {
-                callback.onDetectorSuccess ();
-            }
-            sleep (10000);
-        } catch (SocketTimeoutException e) {
+            JarFile jarFile = new JarFile (new URI (path).getPath ());
+            Attributes attrs = jarFile.getManifest ().getMainAttributes ();
+            version = attrs.getValue (""Version"");
+            buildDate = attrs.getValue (""Build-Date"");
+            return;
         } catch (Exception e) {
-            logger.log (Level.FINE, ""Failure: "" + e);
-        } finally {
-            try {
-                s.close ();
-            } catch (IOException e) {
-            }
+            LoggerFactory.getLogger ().log (Level.WARNING, ""Cannot obtain version"", e);
         }
     }
+    version = ""current"";
+    buildDate = ""today"";
 }
-",117,165
+",65,86
+systems/config/Version.java,"
+public static String getFullName () {
+    return NAME + "" "" + getVersion ();
+}
+",88,91
 systems/config/CommandLineProcessor.java,"
 CommandLineProcessor (FeederRegistry < FeederCreator > feederCreators, ExporterRegistry exporters) {
     this.feederRegistry = feederCreators;
@@ -291,72 +493,6 @@ public void transitionTo (ScanningState state, Transition transition) {
     }
 }
 ",178,201
-systems/config/ScannerConfig.java,"
-ScannerConfig (Preferences preferences) {
-    this.preferences = preferences;
-    maxThreads = preferences.getInt (""maxThreads"", Platform.CRIPPLED_WINDOWS ? 10 : 100);
-    threadDelay = preferences.getInt (""threadDelay"", 20);
-    scanDeadHosts = preferences.getBoolean (""scanDeadHosts"", false);
-    selectedPinger = preferences.get (""selectedPinger"", Platform.WINDOWS && ! Platform.ARCH_64 ? ""pinger.windows"" : ""pinger.icmp"");
-    pingTimeout = preferences.getInt (""pingTimeout"", 2000);
-    pingCount = preferences.getInt (""pingCount"", 3);
-    skipBroadcastAddresses = preferences.getBoolean (""skipBroadcastAddresses"", true);
-    portTimeout = preferences.getInt (""portTimeout"", 2000);
-    adaptPortTimeout = preferences.getBoolean (""adaptPortTimeout"", ! Platform.CRIPPLED_WINDOWS);
-    minPortTimeout = preferences.getInt (""minPortTimeout"", 100);
-    portString = preferences.get (""portString"", """");
-    useRequestedPorts = preferences.getBoolean (""useRequestedPorts"", true);
-    notAvailableText = preferences.get (""notAvailableText"", Labels.getLabel (""fetcher.value.notAvailable""));
-    notScannedText = preferences.get (""notScannedText"", Labels.getLabel (""fetcher.value.notScanned""));
-}
-",40,58
-systems/config/ScannerConfig.java,"
-public void store () {
-    preferences.putInt (""maxThreads"", maxThreads);
-    preferences.putInt (""threadDelay"", threadDelay);
-    preferences.putBoolean (""scanDeadHosts"", scanDeadHosts);
-    preferences.put (""selectedPinger"", selectedPinger);
-    preferences.putInt (""pingTimeout"", pingTimeout);
-    preferences.putInt (""pingCount"", pingCount);
-    preferences.putBoolean (""skipBroadcastAddresses"", skipBroadcastAddresses);
-    preferences.putInt (""portTimeout"", portTimeout);
-    preferences.putBoolean (""adaptPortTimeout"", adaptPortTimeout);
-    preferences.putInt (""minPortTimeout"", minPortTimeout);
-    preferences.put (""portString"", portString);
-    preferences.putBoolean (""useRequestedPorts"", useRequestedPorts);
-    preferences.put (""notAvailableText"", notAvailableText);
-    preferences.put (""notScannedText"", notScannedText);
-}
-",63,79
-systems/config/FavoritesConfig.java,"
-public FavoritesConfig (Preferences preferences) {
-    super (preferences, ""favorites"");
-}
-",20,23
-systems/config/FavoritesConfig.java,"
-public void add (String key, FeederCreator feederCreator) {
-    StringBuilder serializedFeeder = new StringBuilder (feederCreator.getFeederId ());
-    serializedFeeder.append ('\t');
-    for (String part : feederCreator.serialize ()) {
-        serializedFeeder.append (part).append ("":::"");
-    }
-    super.add (key, serializedFeeder.toString ());
-}
-",25,34
-systems/config/FavoritesConfig.java,"
-public String getFeederId (String key) {
-    String value = get (key);
-    int indexOf = value.indexOf ('\t');
-    return value.substring (0, indexOf);
-}
-",36,41
-systems/config/FavoritesConfig.java,"
-public String [] getSerializedParts (String key) {
-    String value = get (key);
-    int indexOf = value.indexOf ('\t');
-    return value.substring (indexOf + 1).split ("":::"");
-}
-",43,48
 systems/config/ComponentRegistry.java,"
 public ComponentRegistry () {
     MutablePicoContainer container = new DefaultPicoContainer ();
@@ -459,87 +595,99 @@ public CommandLineProcessor getCommandLineProcessor () {
     return (CommandLineProcessor) container.getComponentInstance (CommandLineProcessor.class);
 }
 ",242,246
-systems/config/CommentsConfig.java,"
-public CommentsConfig (Preferences preferences) {
-    this.preferences = preferences.node (""comments"");
+systems/config/ConfigDetector.java,"
+public ConfigDetector (ScannerConfig config) {
+    this.config = config;
 }
-",21,25
-systems/config/CommentsConfig.java,"
-public String getComment (InetAddress address) {
-    return preferences.get (address.getHostAddress (), null);
+",37,40
+systems/config/ConfigDetector.java,"
+public void setCallback (DetectorCallback callback) {
+    this.callback = callback;
 }
-",27,30
-systems/config/CommentsConfig.java,"
-public void setComment (InetAddress address, String comment) {
-    if (comment == null || comment.length () == 0) preferences.remove (address.getHostAddress ());
-    else preferences.put (address.getHostAddress (), comment);
-}
-",32,38
-systems/config/OpenersConfig.java,"
-public OpenersConfig (Preferences preferences) {
-    super (preferences, ""openers"");
-    if (size () == 0) {
-        Labels labels = Labels.getInstance ();
-        if (Platform.WINDOWS) add (labels.get (""opener.netbios""), new Opener (""\\\\${fetcher.ip}"", false, null));
-        add (labels.get (""opener.web""), new Opener (""http://${fetcher.hostname}/"", false, null));
-        add (labels.get (""opener.ftp""), new Opener (""ftp://${fetcher.hostname}/"", false, null));
-        add (labels.get (""opener.telnet""), new Opener (""telnet ${fetcher.ip}"", true, null));
-        add (labels.get (""opener.ping""), new Opener (""ping ${fetcher.ip}"", true, null));
-        add (labels.get (""opener.traceroute""), new Opener ((Platform.WINDOWS ? ""tracert"" : Platform.LINUX ? ""tracepath"" : ""traceroute"") + "" ${fetcher.ip}"", true, null));
-        if (! Platform.WINDOWS) add (labels.get (""opener.ssh""), new Opener (""ssh ${fetcher.ip}"", true, null));
-        if (! Platform.WINDOWS) add (labels.get (""opener.whois""), new Opener (""whois ${fetcher.ip}"", true, null));
-        add (labels.get (""opener.geolocate""), new Opener (""http://www.angryip.org/iplocate.php?ip=${fetcher.ip}"", false, null));
-        add (labels.get (""opener.email""), new Opener (""mailto:somebody@example.com?subject=${fetcher.ip} (${fetcher.hostname})"", true, null));
+",42,45
+systems/config/ConfigDetector.java,"
+public void detectMaxThreads (InetSocketAddress socketAddress) {
+    logger = LoggerFactory.getLogger ();
+    expectedConnects = new AtomicInteger ();
+    actualConnects = new AtomicInteger ();
+    List < Thread > threads = new LinkedList < Thread > ();
+    for (int i = 0; i < config.maxThreads; i ++) {
+        Thread t = new SocketThread (socketAddress);
+        threads.add (t);
+        t.start ();
     }
+    join (threads);
 }
-",22,41
-systems/config/OpenersConfig.java,"
-Object serializeValue (String value) {
-    return new Opener (value);
-}
-",43,46
-systems/config/OpenersConfig.java,"
-public void add (String name, Object value) {
-    if (value instanceof Opener) super.add (name, value);
-    else throw new IllegalArgumentException ();
-}
-",48,55
-systems/config/OpenersConfig.java,"
-public Opener getOpener (String name) {
-    return (Opener) namedList.get (name);
-}
-",57,60
-systems/config/OpenersConfig.java,"
-Opener (String serialized) {
+",47,65
+systems/config/ConfigDetector.java,"
+private void join (List < Thread > threads) {
     try {
-        String [] parts = serialized.split (""@@@"");
-        execString = parts [0];
-        inTerminal = parts [1].charAt (0) == '1';
-        workingDir = parts.length >= 3 && parts [2].length () > 0 ? new File (parts [2]) : null;
-    } catch (ArrayIndexOutOfBoundsException e) {
-        LOG.fine (""Broken opener config read: "" + serialized);
+        for (Thread t : threads) {
+            t.join ();
+        }
+        threads.clear ();
+    } catch (InterruptedException e) {
     }
 }
-",68,82
-systems/config/OpenersConfig.java,"
-public Opener (String execString, boolean inTerminal, File workingDir) {
-    this.execString = execString;
-    this.inTerminal = inTerminal;
-    this.workingDir = workingDir;
+",67,80
+systems/config/ConfigDetector.java,"
+public int getInitialConnectCount () {
+    return config.maxThreads * CONNECTS_PER_THREAD;
 }
-",84,89
-systems/config/OpenersConfig.java,"
-public String toString () {
-    return execString + ""@@@"" + (inTerminal ? '1' : '0') + ""@@@"" + (workingDir != null ? workingDir.toString () : """");
+",82,85
+systems/config/ConfigDetector.java,"
+public int getInitialSuccessCount () {
+    return (int) (getInitialConnectCount () * SUCCESS_PROBABILITY);
 }
-",91,94
-systems/config/LoggerFactory.java,"
-public static Logger getLogger () {
-    Throwable t = new Throwable ();
-    StackTraceElement directCaller = t.getStackTrace () [1];
-    return Logger.getLogger (directCaller.getClassName ());
+",87,90
+systems/config/ConfigDetector.java,"
+public int getExpectedSuccessfulConnectCount () {
+    return expectedConnects.intValue ();
 }
-",21,26
+",92,95
+systems/config/ConfigDetector.java,"
+public int getActualSuccessfulConnectCount () {
+    return actualConnects.intValue ();
+}
+",97,100
+systems/config/ConfigDetector.java,"
+public SocketThread (InetSocketAddress socketAddress) {
+    this.socketAddress = socketAddress;
+}
+",112,115
+systems/config/ConfigDetector.java,"
+public void run () {
+    for (int i = 0; i < CONNECTS_PER_THREAD; i ++) {
+        if (callback != null) callback.onDetectorTry ();
+        Socket s = new Socket ();
+        try {
+            s.setSoTimeout (config.portTimeout);
+            s.setTcpNoDelay (true);
+            s.setSoLinger (true, 0);
+            if (Math.random () > (1.0 - SUCCESS_PROBABILITY)) {
+                expectedConnects.incrementAndGet ();
+                s.connect (socketAddress, config.portTimeout);
+            }
+            else {
+                s.connect (new InetSocketAddress (InetAddress.getByAddress (new byte [] {(byte) 192, (byte) 168, (byte) (Math.random () * 255), (byte) (Math.random () * 255)}), 61493 + (int) (Math.random () * 200)), config.portTimeout);
+            }
+            actualConnects.incrementAndGet ();
+            if (callback != null) {
+                callback.onDetectorSuccess ();
+            }
+            sleep (10000);
+        } catch (SocketTimeoutException e) {
+        } catch (Exception e) {
+            logger.log (Level.FINE, ""Failure: "" + e);
+        } finally {
+            try {
+                s.close ();
+            } catch (IOException e) {
+            }
+        }
+    }
+}
+",117,165
 systems/config/GUIConfig.java,"
 GUIConfig (Preferences preferences) {
     this.preferences = preferences;
@@ -606,151 +754,3 @@ public void setColumnWidth (Fetcher fetcher, int width) {
     preferences.putInt (""columnWidth."" + fetcher.getId (), width);
 }
 ",134,137
-systems/config/Config.java,"
-private Config () {
-    preferences = Preferences.userRoot ().node (""ipscan"");
-    scannerConfig = new ScannerConfig (preferences);
-    guiConfig = new GUIConfig (preferences);
-    favoritesConfig = new FavoritesConfig (preferences);
-    openersConfig = new OpenersConfig (preferences);
-}
-",31,38
-systems/config/Config.java,"
-public static Config getConfig () {
-    if (globalConfig == null) {
-        globalConfig = new Config ();
-    }
-    return globalConfig;
-}
-",43,50
-systems/config/Config.java,"
-public void store () {
-    scannerConfig.store ();
-    guiConfig.store ();
-    favoritesConfig.store ();
-    openersConfig.store ();
-}
-",52,58
-systems/config/Config.java,"
-public Preferences getPreferences () {
-    return preferences;
-}
-",60,63
-systems/config/Config.java,"
-public ScannerConfig forScanner () {
-    return scannerConfig;
-}
-",68,71
-systems/config/Config.java,"
-NamedListConfig forFavorites () {
-    return favoritesConfig;
-}
-",76,79
-systems/config/Config.java,"
-OpenersConfig forOpeners () {
-    return openersConfig;
-}
-",84,87
-systems/config/Config.java,"
-public GUIConfig forGUI () {
-    return guiConfig;
-}
-",92,95
-systems/config/Version.java,"
-public static String getVersion () {
-    if (version == null) {
-        loadVersionFromJar ();
-    }
-    return version;
-}
-",44,51
-systems/config/Version.java,"
-public static String getBuildDate () {
-    if (buildDate == null) {
-        loadVersionFromJar ();
-    }
-    return buildDate;
-}
-",56,63
-systems/config/Version.java,"
-private static void loadVersionFromJar () {
-    String path = Version.class.getClassLoader ().getResource (Version.class.getName ().replace ('.', '/') + "".class"").toString ();
-    if (path.startsWith (""jar:file:"")) {
-        path = path.substring (4, path.indexOf ('!'));
-        try {
-            JarFile jarFile = new JarFile (new URI (path).getPath ());
-            Attributes attrs = jarFile.getManifest ().getMainAttributes ();
-            version = attrs.getValue (""Version"");
-            buildDate = attrs.getValue (""Build-Date"");
-            return;
-        } catch (Exception e) {
-            LoggerFactory.getLogger ().log (Level.WARNING, ""Cannot obtain version"", e);
-        }
-    }
-    version = ""current"";
-    buildDate = ""today"";
-}
-",65,86
-systems/config/Version.java,"
-public static String getFullName () {
-    return NAME + "" "" + getVersion ();
-}
-",88,91
-systems/config/Labels.java,"
-private Labels () {
-}
-",41,44
-systems/config/Labels.java,"
-public static final Labels getInstance () {
-    return instance;
-}
-",46,49
-systems/config/Labels.java,"
-public static void initialize (Locale locale) {
-    if (instance != null && locale.equals (instance.locale)) {
-        return;
-    }
-    instance = new Labels ();
-    instance.locale = locale;
-    InputStream labelsStream = null;
-    try {
-        labelsStream = Labels.class.getClassLoader ().getResourceAsStream (""messages.properties"");
-        if (labelsStream == null) {
-            throw new MissingResourceException (""Labels not found!"", Labels.class.getName (), ""messages"");
-        }
-        instance.labelsFallback = new PropertyResourceBundle (labelsStream);
-        labelsStream.close ();
-    } catch (IOException e) {
-        throw new MissingResourceException (e.toString (), Labels.class.getName (), ""messages"");
-    }
-    try {
-        labelsStream = Labels.class.getClassLoader ().getResourceAsStream (""messages_"" + locale.getLanguage () + "".properties"");
-        instance.labels = new PropertyResourceBundle (labelsStream);
-        labelsStream.close ();
-    } catch (Exception e) {
-        instance.labels = instance.labelsFallback;
-    }
-}
-",56,95
-systems/config/Labels.java,"
-public InputStream getImageAsStream (String key) {
-    String imagePath = get (key);
-    return getClass ().getClassLoader ().getResourceAsStream (imagePath);
-}
-",101,105
-systems/config/Labels.java,"
-public String get (String key) {
-    try {
-        return labels.getString (key);
-    } catch (MissingResourceException e) {
-        String text = labelsFallback.getString (key);
-        LOG.warning (""Used fallback label for "" + key);
-        return text;
-    }
-}
-",111,123
-systems/config/Labels.java,"
-public static String getLabel (String key) {
-    return getInstance ().get (key);
-}
-",128,131
