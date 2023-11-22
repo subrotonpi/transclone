@@ -9,7 +9,8 @@ import torch.nn.functional as F
 import torch.optim as optim
 import argparse
 from tqdm import tqdm, trange
-from gmn.createclone import createast,creategmndata,createseparategraph
+# from gmn.createclone import createast,creategmndata,createseparategraph #for javalang version
+from graph_src import get_xml_asts, get_vocab_dict, get_graph_data, create_gmn_dataset #srcML
 import gmn.models
 import random, os
 import numpy as np
