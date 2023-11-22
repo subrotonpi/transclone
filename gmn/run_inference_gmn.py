@@ -63,6 +63,6 @@ def detect_clones(args):
     
     # df_res = pd.DataFrame(res, columns=['item']) #output.item(), add this in test
     # r = pd.concat([pairs_df, df_res], axis=1)
-    res_df.to_csv(args.data+'predictions.csv', index=None)
-    res_df.to_xml(args.data+'predictions.xml', index=None)
+    res_df.to_csv(args.data+'/predictions.csv', index=None)
+    res_df.to_xml(args.data+'/predictions.xml', index=None)
     return res, res_df

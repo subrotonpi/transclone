@@ -1,0 +1,19 @@
+file_path,code,start,end
+systems/config/rbm.py,"
+def abc() :
+INDENT
+    pass
+DEDENT
+",1,3
+systems/config/rbm.py,"
+def test(a, b) :
+INDENT
+    return a - b
+DEDENT
+",4,6
+systems/config/rbm.py,"
+def random(a) :
+INDENT
+    return a ** a
+DEDENT
+",7,8

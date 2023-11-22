@@ -1,4 +1,4 @@
 git pull
 git add .
-git commit -m 'frequent'
+git commit -m $1
 git push

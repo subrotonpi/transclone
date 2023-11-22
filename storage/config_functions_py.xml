@@ -1,0 +1,18 @@
+<source file="systems/config/rbm.py" startline="1" endline="3">
+def abc() :
+INDENT
+    pass
+DEDENT
+</source>
+<source file="systems/config/rbm.py" startline="4" endline="6">
+def test(a, b) :
+INDENT
+    return a - b
+DEDENT
+</source>
+<source file="systems/config/rbm.py" startline="7" endline="8">
+def random(a) :
+INDENT
+    return a ** a
+DEDENT
+</source>

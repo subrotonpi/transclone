@@ -16,7 +16,7 @@ python3 transclone.py \
     --tgt_lang java \
     --fragment_to_conv "" \
     --threshold 0 \
-    --data $PROJECT_ROOT/storage/ \
-    --subject_system $PROJECT_ROOT/storage/systems/ \
+    --data $PROJECT_ROOT/storage \
+    --subject_system $PROJECT_ROOT/storage/systems/config \
     --src_gmn_path $PROJECT_ROOT/gmn/gmn_srcml_clcdsa.pt \
     --pairs $PROJECT_ROOT/storage/pairs.csv 2>&1 | tee output.log

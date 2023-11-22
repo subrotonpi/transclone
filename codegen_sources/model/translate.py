@@ -370,5 +370,67 @@ def convert_systems(args, src, tgt):
                 continue
         logging.info('**** CONVERTED ALL FILES ****')
         logging.info('**** ERRORS ARE SAVED IN: '+project_root+'/errors.txt ****')
-def preprocess_system(args, src, tgt):
-    convert_systems(args, src, tgt)      
+        
+def convert_functions(args, src, tgt, functions_to_convert):
+    print(project_root)
+    # parser =  get_parser()
+    params = args #parser.parse_args()
+    params.src_lang = src#'python' #user input
+    params.tgt_lang = tgt#'java' #user input
+    # params.beam_size = 1
+    
+    # 'TransCoder_model_1.pth': C++ -> Java, Java -> C++, Python -> C++
+    # 'TransCoder_model_2.pth': C++ -> Python
+    # 'translator_transcoder_size_from_DOBF.pth': Java--> Python, Python-->Java
+    
+    
+    if params.src_lang=='java':
+        if params.tgt_lang == 'python':
+            params.transcoder_path = project_root+'/storage/pretrained/translator_transcoder_size_from_DOBF.pth'
+        elif params.tgt_lang =='cpp':
+            params.transcoder_path == project_root+'/storage/pretrained/TransCoder_model_1.pth'
+            
+    elif params.src_lang=='cpp':
+        if params.tgt_lang == 'java':
+            params.transcoder_path = project_root+'/storage/pretrained/TransCoder_model_1.pth'
+        elif params.tgt_lang =='python':
+            params.transcoder_path == project_root+'/storage/pretrained/TransCoder_model_2.pth'
+                
+    elif params.src_lang =='python':
+        if params.tgt_lang=='java':
+            params.transcoder_path = project_root+'/storage/pretrained/translator_transcoder_size_from_DOBF.pth'
+        elif params.tgt_lang =='cpp':
+            params.transcoder_path == project_root+'/storage/pretrained/TransCoder_model_1.pth'
+            
+    BPE_path = str(Path(__file__).parents[2].joinpath("data/bpe/cpp-java-python/codes"))
+    translator = Translator(params.transcoder_path, BPE_path)
+    x = []
+    for ind, row in functions_to_convert.iterrows():
+        # if ext not in SUPPORTED_LANGUAGES_EXTENSION:
+        #     logging.info('\n Language not supported ******'+file+'******')
+        #     continue
+        try:
+            # c = row.code.replace("INDENT", "    ")
+            # c = c.code.replace("DEDENT", "")
+            
+            params.fragment_to_conv = row.code #open(file_path).read().strip()
+            logging.info(f'CONVERTING --> {row.file_path}')#+str(file))
+            code = get_translation(params, translator)
+            code_ = ''.join(code)
+            x.append([row.file_path, code_, row.start, row.end]) #'file_path', 'code', 'start', 'end'
+            logging.info(f'CONVERTED-->{row.file_path}')#+tgt_fpath)                
+        except Exception:
+            logging.info(f'ERROR CONVERTING --> {row.file_path}')#+str(file))
+            x.append([row.file_path, "NULL", row.start, row.end]) 
+        finally:
+            continue
+    logging.info('**** CONVERTED ALL FILES ****')
+    logging.info('**** ERRORS ARE SAVED IN: '+project_root+'/errors.txt ****')
+    
+    return pd.DataFrame(x,columns =["file_path","code", "start", "end"])
+        
+# def preprocess_system(args, src, tgt):
+#     convert_systems(args, src, tgt)  
+def preprocess_system_translate(args, functions_to_convert):
+    src, tgt = args.src_lang, args.tgt_lang
+    return convert_functions(args, src, tgt, functions_to_convert)

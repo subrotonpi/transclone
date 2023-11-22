@@ -119,7 +119,7 @@ def countnodes(node,ifcount,whilecount,forcount,blockcount):
     for child in node.children:
         countnodes(child,ifcount,whilecount,forcount,blockcount)
 
-
+# we can use srcML instead of javalang here, only if the machine has it installed
 def createast(args):
     asts=[]
     paths=[]
@@ -128,19 +128,42 @@ def createast(args):
     p = args.pairs #args.data+'pairs.csv'
     df = pd.read_csv(p, names=['c1', 'c2'])
     fragments = list(set(df.c1).union(set(df.c2)))
-    for fragment_path in fragments:
-        print(fragment_path)
+    codes = pd.read_csv("storage/combined_functions.csv")
+    # for fragment_path in fragments:
+    #     print(fragment_path)
+    #     try:
+    #         programfile=open(fragment_path,encoding='utf-8')
+    #         programtext=programfile.read()
+    #         programtokens=javalang.tokenizer.tokenize(programtext)
+    #         parser=javalang.parse.Parser(programtokens)
+    #         programast=parser.parse_member_declaration()
+    #     except:
+    #         programast = []
+    #     paths.append(fragment_path)
+    #     asts.append(programast)
+    #     get_sequence(programast,alltokens)
+ 
+    for fragment_id in fragments: 
+        text = codes[codes.uid == fragment_id].code.item()
+        print(text)
         try:
-            programfile=open(fragment_path,encoding='utf-8')
-            programtext=programfile.read()
-            programtokens=javalang.tokenizer.tokenize(programtext)
-            parser=javalang.parse.Parser(programtokens)
-            programast=parser.parse_member_declaration()
+            programtokens = javalang.tokenizer.tokenize(text)
+            parser = javalang.parse.Parser(programtokens)
+            programast = parser.parse_member_declaration()
+            print(programast)
         except:
-            programast = []
-        paths.append(fragment_path)
+            try:
+                programtokens = javalang.tokenizer.tokenize(text)
+                programast= javalang.parser.parse(programtokens)
+                print(programast)
+            except:
+                programast = []
+                    
+                    
+        paths.append(fragment_id)
         asts.append(programast)
         get_sequence(programast,alltokens)
+        
     astdict=dict(zip(paths,asts))
 
     '''ifcount=0
@@ -223,7 +246,7 @@ def createseparategraph(args, astdict,vocablen,vocabdict,device,mode='astonly',n
     #print(totalif,totalwhile,totalfor,totalblock)
     return astdict
 def creategmndata(args, id, treedict,vocablen,vocabdict,device):
-    p = args.data+'pairs.csv'
+    p = args.data+'/pairs.csv'
     testlist = pd.read_csv(p, names=['c1', 'c2'])
     testdata = createpairdata(treedict,testlist,device=device)
     return testdata
