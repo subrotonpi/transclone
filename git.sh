@@ -1,4 +1,4 @@
 git pull
 git add .
-git commit -m $1
+git commit -m "nicad function extraction updated"
 git push
