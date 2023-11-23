@@ -2,8 +2,8 @@
             Source language: python
             Target language: java
             Threshold: 0
-            Number of clone pairs: 2722
-            Number of non-clone pairs: 359
-            Percentage of clone pairs: 88.3%
-            Percentage of non-clone pairs: 11.700000000000001%
+            Number of clone pairs: 8
+            Number of non-clone pairs: 2
+            Percentage of clone pairs: 80.0%
+            Percentage of non-clone pairs: 20.0%
     #         

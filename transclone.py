@@ -26,9 +26,16 @@ parser.add_argument('--root' , default=project_root+'/')
 parser.add_argument('--src_gmn_path' , default= project_root+'/gmn/gmn_srcml_clcdsa.pt')
 parser.add_argument("--pairs",default= project_root+'/storage/pairs.csv')
 args = parser.parse_args()
+p="/home/egk204/projects/transclone/storage/mutation_formatted.csv"
+print(p)
+# with open(p, 'r') as file:
+#     content = file.read()
+#     print(content)
+# # print(open(p).read())
 
+quit()
 args.systems_converted = args.root+'storage/systems_converted/'
-logging.info(args)
+# logging.info(args)
 
 # #remove systems_converted content or create the folder
 # if os.path.exists(args.systems_converted):
@@ -38,9 +45,11 @@ logging.info(args)
 #     os.mkdir(args.systems_converted)
 # #preprocess_system
 def preprocess_system(subject_system, args):
-    sys_name = subject_system.split("/")[-1]
-    script_path = "nicad_function_extraction.sh"
-    subprocess.run(["bash", script_path, sys_name])
+    sys_name = os.path.basename(subject_system)#subject_system.split("/")[-1]
+    script_path = "custom_nicad_pipeline.sh" #src/xs.sh
+    subprocess.run(["bash", script_path, subject_system])
+    # quit()
+
     functions_java = get_all_functions(f"{args.data}/{sys_name}_functions_java.xml")
     functions_py = get_all_functions(f"{args.data}/{sys_name}_functions_py.xml")
     # print(functions_java.columns) 
@@ -59,7 +68,8 @@ files = preprocess_system(args.subject_system, args)
 logging.info('***transcoder phase done***')
 
 # # #preprocess_files
-# pairs = preprocess_files(args.systems_converted) #directory
+# # pairs = preprocess_files(args.systems_converted) #directory
+
 pairs = preprocess_files(files) #functions
 logging.info('***generated pairs***')
 #detect_clones
@@ -74,4 +84,4 @@ with open("brief_result", 'w') as file:
     file.write(fstring)
 
 
-# /Path/to/File1.java,5,10,/Path/to/File2,20,25\
+# # /Path/to/File1.java,5,10,/Path/to/File2,20,25\

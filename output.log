@@ -1,85 +1,55 @@
-INFO - 11/22/23 14:24:18 - 0:00:00 - Namespace(cuda='False', transcoder_path='', src_lang='python', tgt_lang='java', fragment_to_conv='', threshold='0', data='/home/egk204/projects/transclone/storage', subject_system='/home/egk204/projects/transclone/storage/systems/config', root='/home/egk204/projects/transclone/', src_gmn_path='/home/egk204/projects/transclone/gmn/gmn_srcml_clcdsa.pt', pairs='/home/egk204/projects/transclone/storage/pairs.csv', systems_converted='/home/egk204/projects/transclone/storage/systems_converted/')
-processing system: config
+INFO - 11/22/23 15:40:59 - 0:00:00 - Namespace(cuda='False', transcoder_path='', src_lang='python', tgt_lang='java', fragment_to_conv='', threshold='0', data='/home/egk204/projects/transclone/storage', subject_system='/home/egk204/projects/transclone/storage/systems/config', root='/home/egk204/projects/transclone/', src_gmn_path='/home/egk204/projects/transclone/gmn/gmn_srcml_clcdsa.pt', pairs='/home/egk204/projects/transclone/storage/pairs.csv', systems_converted='/home/egk204/projects/transclone/storage/systems_converted/')
+processing system: /home/egk204/projects/transclone/storage/systems/config
+cp: cannot stat 'storage/systems//home/egk204/projects/transclone/storage/systems/config': No such file or directory
 
 NiCad Clone Detector v6.2 (13.11.20)
 
-config=./config/default.cfg
-system=systems/config
-granularity=functions
-language=java
+Usage:  NiCad granularity language systems/systemdir [ config ]
+          where granularity is one of:  { functions blocks ... }
+          and   language    is one of:  { c java cs py ... }
+          and   config      is one of:  { blindrename ... }
 
-Wed 22 Nov 2023 02:24:18 PM CST
-
-Extracting functions from java files in systems/config
-
-real	0m0.132s
-user	0m0.075s
-sys	0m0.064s
-
-Extracted 76 functions
-
-function extraction done...
+mv: cannot stat 'systems//home/egk204/projects/transclone/storage/systems/config_functions.xml': No such file or directory
 
 NiCad Clone Detector v6.2 (13.11.20)
 
-config=./config/default.cfg
-system=systems/config
-granularity=functions
-language=py
+Usage:  NiCad granularity language systems/systemdir [ config ]
+          where granularity is one of:  { functions blocks ... }
+          and   language    is one of:  { c java cs py ... }
+          and   config      is one of:  { blindrename ... }
 
-Wed 22 Nov 2023 02:24:18 PM CST
+mv: cannot stat 'systems//home/egk204/projects/transclone/storage/systems/config_functions.xml': No such file or directory
+rm: cannot remove 'systems//home/egk204/projects/transclone/storage/systems/config/': No such file or directory
+INFO - 11/22/23 15:41:01 - 0:00:02 - ============ Model Reloading
+INFO - 11/22/23 15:41:01 - 0:00:02 - Reloading encoder from /home/egk204/projects/transclone/storage/pretrained/translator_transcoder_size_from_DOBF.pth ...
+WARNING - 11/22/23 15:41:03 - 0:00:04 - Lang cpp_sa matched to pretrained cpp_sa lang embedding.
+WARNING - 11/22/23 15:41:03 - 0:00:04 - Lang java_sa matched to pretrained java_sa lang embedding.
+WARNING - 11/22/23 15:41:03 - 0:00:04 - Lang python_sa matched to pretrained python_sa lang embedding.
+INFO - 11/22/23 15:41:03 - 0:00:04 - Reloading decoders from /home/egk204/projects/transclone/storage/pretrained/translator_transcoder_size_from_DOBF.pth ...
+WARNING - 11/22/23 15:41:03 - 0:00:04 - Lang cpp_sa matched to pretrained cpp_sa lang embedding.
+WARNING - 11/22/23 15:41:03 - 0:00:04 - Lang java_sa matched to pretrained java_sa lang embedding.
+WARNING - 11/22/23 15:41:03 - 0:00:04 - Lang python_sa matched to pretrained python_sa lang embedding.
+INFO - 11/22/23 15:41:04 - 0:00:04 - Number of parameters (encoder): 143279616
+INFO - 11/22/23 15:41:04 - 0:00:04 - Number of parameters (decoders): 168482304
+INFO - 11/22/23 15:41:04 - 0:00:04 - Number of decoders: 1
 
-Extracting functions from py files in systems/config
-
-real	0m0.049s
-user	0m0.029s
-sys	0m0.031s
-
-Extracted 3 functions
-
-function extraction done...
-INFO - 11/22/23 14:24:20 - 0:00:03 - ============ Model Reloading
-INFO - 11/22/23 14:24:20 - 0:00:03 - Reloading encoder from /home/egk204/projects/transclone/storage/pretrained/translator_transcoder_size_from_DOBF.pth ...
-WARNING - 11/22/23 14:24:22 - 0:00:04 - Lang cpp_sa matched to pretrained cpp_sa lang embedding.
-WARNING - 11/22/23 14:24:22 - 0:00:04 - Lang java_sa matched to pretrained java_sa lang embedding.
-WARNING - 11/22/23 14:24:22 - 0:00:04 - Lang python_sa matched to pretrained python_sa lang embedding.
-INFO - 11/22/23 14:24:22 - 0:00:04 - Reloading decoders from /home/egk204/projects/transclone/storage/pretrained/translator_transcoder_size_from_DOBF.pth ...
-WARNING - 11/22/23 14:24:22 - 0:00:04 - Lang cpp_sa matched to pretrained cpp_sa lang embedding.
-WARNING - 11/22/23 14:24:22 - 0:00:04 - Lang java_sa matched to pretrained java_sa lang embedding.
-WARNING - 11/22/23 14:24:22 - 0:00:04 - Lang python_sa matched to pretrained python_sa lang embedding.
-INFO - 11/22/23 14:24:22 - 0:00:05 - Number of parameters (encoder): 143279616
-INFO - 11/22/23 14:24:22 - 0:00:05 - Number of parameters (decoders): 168482304
-INFO - 11/22/23 14:24:22 - 0:00:05 - Number of decoders: 1
-
-INFO - 11/22/23 14:24:23 - 0:00:05 - CONVERTING --> systems/config/rbm.py
+INFO - 11/22/23 15:41:04 - 0:00:05 - CONVERTING --> systems/config/rbm.py
 Loading codes from /home/egk204/projects/transclone/data/bpe/cpp-java-python/codes ...
 Read 50000 codes from the codes file.
-INFO - 11/22/23 14:24:23 - 0:00:05 - CONVERTED-->systems/config/rbm.py
-INFO - 11/22/23 14:24:23 - 0:00:05 - CONVERTING --> systems/config/rbm.py
+INFO - 11/22/23 15:41:04 - 0:00:05 - CONVERTED-->systems/config/rbm.py
+INFO - 11/22/23 15:41:04 - 0:00:05 - CONVERTING --> systems/config/rbm.py
 Loading codes from /home/egk204/projects/transclone/data/bpe/cpp-java-python/codes ...
 Read 50000 codes from the codes file.
-INFO - 11/22/23 14:24:23 - 0:00:06 - CONVERTED-->systems/config/rbm.py
-INFO - 11/22/23 14:24:23 - 0:00:06 - CONVERTING --> systems/config/rbm.py
+INFO - 11/22/23 15:41:04 - 0:00:05 - CONVERTED-->systems/config/rbm.py
+INFO - 11/22/23 15:41:04 - 0:00:05 - CONVERTING --> systems/config/rbm.py
 Loading codes from /home/egk204/projects/transclone/data/bpe/cpp-java-python/codes ...
 Read 50000 codes from the codes file.
-INFO - 11/22/23 14:24:23 - 0:00:06 - CONVERTED-->systems/config/rbm.py
-INFO - 11/22/23 14:24:23 - 0:00:06 - **** CONVERTED ALL FILES ****
-INFO - 11/22/23 14:24:23 - 0:00:06 - **** ERRORS ARE SAVED IN: /home/egk204/projects/transclone/errors.txt ****
-INFO - 11/22/23 14:24:23 - 0:00:06 - ***transcoder phase done***
-INFO - 11/22/23 14:24:23 - 0:00:06 - ****PAIRS SAVED IN-->./storage/pairs.csv****
-INFO - 11/22/23 14:24:23 - 0:00:06 - ***generated pairs***
-/home/egk204/projects/transclone/venv/lib/python3.10/site-packages/torch_geometric/deprecation.py:22: UserWarning: 'nn.glob.GlobalAttention' is deprecated, use 'nn.aggr.AttentionalAggregation' instead
-  warnings.warn(out)
-INFO - 11/22/23 14:24:32 - 0:00:15 - ***saved in: storage/predictions***
-INFO - 11/22/23 14:24:32 - 0:00:15 - 
-                                                 Source language: python
-                                                 Target language: java
-                                                 Threshold: 0
-                                                 Number of clone pairs: 2722
-                                                 Number of non-clone pairs: 359
-                                                 Percentage of clone pairs: 88.3%
-                                                 Percentage of non-clone pairs: 11.700000000000001%
-                                         #         
+INFO - 11/22/23 15:41:05 - 0:00:05 - CONVERTED-->systems/config/rbm.py
+INFO - 11/22/23 15:41:05 - 0:00:05 - **** CONVERTED ALL FILES ****
+INFO - 11/22/23 15:41:05 - 0:00:05 - **** ERRORS ARE SAVED IN: /home/egk204/projects/transclone/errors.txt ****
+INFO - 11/22/23 15:41:05 - 0:00:05 - ***transcoder phase done***
+INFO - 11/22/23 15:41:05 - 0:00:05 - ****PAIRS SAVED IN-->./storage/pairs.csv****
+INFO - 11/22/23 15:41:05 - 0:00:05 - ***generated pairs***
 adding to path /home/egk204/projects/transclone
 /home/egk204/projects/transclone
 Tokenized python_sa function:
@@ -88,5 +58,3 @@ Tokenized python_sa function:
 ['def', 'test', '(', 'a', ',', 'b', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', 'a', '-', 'b', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
 Tokenized python_sa function:
 ['def', 'random', '(', 'a', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', 'a', '**', 'a', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
-vocab len for test data  648
-/home/egk204/projects/transclone/storage/mutation_formatted.txt

@@ -1,6 +1,4 @@
-public static double random ( double a ) {
-  {
-    return a * a ;
-  }
-  return a ;
+
+public void setIdMappingStrategy (IdStoringStrategy idMappingStrategy) {
+    this.idStoringStrategy = idMappingStrategy;
 }

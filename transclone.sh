@@ -6,7 +6,7 @@ PROJECT_ROOT=$PWD
 function display_usage() {
     echo "Usage: $0 [--cuda] [--transcoder_path <path>] [--src_lang <language>] [--tgt_lang <language>] [--fragment_to_conv <fragment>] [--threshold <value>] [--data <directory>] [--subject_system <directory>] [--root <directory>] [--src_gmn_path <path>] [--pairs <file>]"
 }
-display_usage
+# display_usage
 
 python3 transclone.py \
     --root $PROJECT_ROOT/ \

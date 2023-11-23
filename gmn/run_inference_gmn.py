@@ -58,16 +58,18 @@ def detect_clones(args):
     vocab_dict, vocab_len = get_vocab_dict(xml_asts, args)
     graph_data = get_graph_data(xml_asts, vocab_dict, args)
     test_data = create_gmn_dataset(graph_data, device, args)
-    
     num_layers= 4#int(args.num_layers)
     model=gmn.models.GMNnet(vocablen=vocabsize,embedding_dim=100,num_layers=num_layers,device=device).to(device)
     model.load_state_dict(torch.load(args.src_gmn_path, map_location=device))
     model.eval()
 
     res, scores = test(args, model, test_data, device)
-    
     import pandas as pd
     pairs_df = pd.read_csv(args.pairs, names=['code1', 'code2'])
+#check
+    pairs_df = pairs_df.head(10)
+
+
     pairs_df['prediction'] = pd.Series(res)
     pairs_df['score'] = pd.Series(scores)
     res_df = pairs_df
@@ -76,10 +78,10 @@ def detect_clones(args):
     # r = pd.concat([pairs_df, df_res], axis=1)
     res_df.to_csv(args.data+'/predictions.csv', index=None)
     res_df.to_xml(args.data+'/predictions.xml', index=None)
-    for_muttion_framework(args, res_df)
+    for_mutation_framework(args, res_df)
     return res, res_df
 
-def for_muttion_framework(args, res_df):
+def for_mutation_framework(args, res_df):
     com = pd.read_csv(args.data + "/combined_functions.csv")
     x = ""
     for ind, row in res_df.iterrows(): #code1,code2,prediction,score
@@ -96,9 +98,9 @@ def for_muttion_framework(args, res_df):
         
         if row.prediction == "clone":
             # /Path/to/File1.java,5,10,/Path/to/File2,20,25\
-            tmp = f"{f1}, {s1}, {e1}, {f2}, {s2}, {e2}\n"
+            tmp = f"{f1}, {s1}, {e1}, {f2}, {s2}, {e2}\\\n"
             x += tmp
-    wp = f"{args.data}/mutation_formatted.txt"
+    wp = f"{args.data}/mutation_formatted.csv"
     with open(wp, 'w') as file:
         # Write the string to the file
         file.write(x)    

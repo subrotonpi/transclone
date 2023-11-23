@@ -3,3 +3,4 @@ apex
 tree-sitter
 storage/pretrained
 codegen_sources/model/tools/fastBPE
+NiCad/systems

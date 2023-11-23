@@ -6,10 +6,11 @@ import ctypes
 import stat
 from pylibsrcml import srcml
 import subprocess
+import torch
 # dstype = 'dataset_large'
 
 dir = ''
-device = 'cpu'
+device=torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 #dictionary helper functions
 def print_dict(d):
     for k,v in d.items():
@@ -74,9 +75,11 @@ def create_pair_data(graph_dict,pair_info, device):
             data = [[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2], -1]
             datalist.append(data)
     return datalist
-
 def create_gmn_dataset(graph_dict, device, args):
-    test_list = codes = pd.read_csv(args.data+"/pairs.csv", names=['c1', 'c2'])
+    test_list =  pd.read_csv(args.data+"/pairs.csv", names=['c1', 'c2'])
+    #check
+    test_list=test_list.head(10)
+
     test_data=create_pair_data(graph_dict,test_list,device=device)
     return test_data
     
