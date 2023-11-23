@@ -16,7 +16,7 @@
     <code1>0-31-31</code1>
     <code2>0-42-45</code2>
     <prediction>non-clone</prediction>
-    <score>-0.10066826641559601</score>
+    <score>-0.10066823661327362</score>
   </row>
   <row>
     <code1>0-31-31</code1>
@@ -34,7 +34,7 @@
     <code1>0-31-31</code1>
     <code2>1-32-37</code2>
     <prediction>clone</prediction>
-    <score>0.017335817217826843</score>
+    <score>0.017335809767246246</score>
   </row>
   <row>
     <code1>0-31-31</code1>
@@ -46,7 +46,7 @@
     <code1>0-31-31</code1>
     <code2>1-45-48</code2>
     <prediction>clone</prediction>
-    <score>0.23857787251472473</score>
+    <score>0.23857785761356354</score>
   </row>
   <row>
     <code1>0-31-31</code1>

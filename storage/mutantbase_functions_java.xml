@@ -1739,20 +1739,7 @@ public boolean suppressElement (ElementDescriptor element, String namespaceUrl, 
     return result;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="133" endline="148">
-public void testConstructorAttributes () throws Exception {
-    Constructor c = SuperSample.class.getDeclaredConstructor (new Class [] {String.class, (new String [0] [0]).getClass ()});
-    assertEquals (1, Attributes.getAttributes (c).size ());
-    assertEquals (1, Attributes.getAttributes (c, Dependency.class).size ());
-    assertTrue (Attributes.hasAttributeType (c, Dependency.class));
-    assertTrue (Attributes.hasAttribute (c, new Dependency (SampleService.class, "sample-ctor2")));
-    assertEquals (1, Attributes.getParameterAttributes (c, 1).size ());
-    assertEquals (1, Attributes.getParameterAttributes (c, 1, ThreadSafe.class).size ());
-    assertTrue (Attributes.hasParameterAttributeType (c, 1, ThreadSafe.class));
-    assertTrue (Attributes.hasParameterAttribute (c, 1, new ThreadSafe ()));
-}
-</source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="151" endline="208">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="135" endline="192">
 public void testSuppressElementName () throws Exception {
     PersonBean angLee = new NullPersonBean ("Ang", "Lee");
     MovieBean movie = new MovieBean ("Crouching Tiger, Hidden Dragon", 2000, angLee);
@@ -1780,12 +1767,12 @@ public void testSuppressElementName () throws Exception {
     xmlAssertIsomorphicContent (parseString (expected), parseString (out));
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="166" endline="169">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="150" endline="153">
 public boolean suppressAttribute (AttributeDescriptor attributeDescriptor, String value) {
     return DEFAULT.suppressAttribute (attributeDescriptor, value);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="171" endline="180">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="155" endline="164">
 public boolean suppressElement (ElementDescriptor element, String namespaceUrl, String localName, String qualifiedName, Object value) {
     boolean result = false;
     if ("year".equals (element.getQualifiedName ())) {
@@ -1794,7 +1781,7 @@ public boolean suppressElement (ElementDescriptor element, String namespaceUrl, 
     return result;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="210" endline="256">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="194" endline="240">
 public void testSuppressName () throws Exception {
     PersonBean angLee = new NullPersonBean ("Ang", "Lee");
     MovieBean movie = new MovieBean ("Crouching Tiger, Hidden Dragon", 2000, angLee);
@@ -1822,12 +1809,12 @@ public void testSuppressName () throws Exception {
     xmlAssertIsomorphicContent (parseString (expected), parseString (out));
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="225" endline="228">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="209" endline="212">
 public boolean suppressAttribute (AttributeDescriptor attributeDescriptor, String value) {
     return DEFAULT.suppressAttribute (attributeDescriptor, value);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="230" endline="239">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java" startline="214" endline="223">
 public boolean suppressElement (ElementDescriptor element, String namespaceUrl, String localName, String qualifiedName, Object value) {
     boolean result = false;
     if ("actor".equals (qualifiedName)) {
@@ -8060,7 +8047,22 @@ private BeanWriter newBeanWriter (Writer writer, NameMapper mapper) {
     return result;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/strategy/TestElementsIO.java" startline="125" endline="132">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/strategy/TestElementsIO.java" startline="124" endline="141">
+protected String getParameterTypes (JavaParameter [] parameters) {
+    StringBuffer sb = new StringBuffer ();
+    for (int i = 0; i < parameters.length; i ++) {
+        if (i > 0) {
+            sb.append (",");
+        }
+        getTransformedQualifiedName (parameters [i].getType ().getJavaClass (), sb);
+        for (int j = 0; j < parameters [i].getType ().getDimensions (); j ++) {
+            sb.append ("[]");
+        }
+    }
+    return sb.toString ();
+}
+</source>
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/strategy/TestElementsIO.java" startline="143" endline="150">
 private XMLIntrospector newXMLIntrospector (NameMapper mapper) {
     XMLIntrospector introspector = new XMLIntrospector ();
     introspector.getConfiguration ().setAttributesForPrimitives (true);
@@ -11049,158 +11051,173 @@ public String getDescription () {
     return (this.description);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="98" endline="101">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="97" endline="114">
+protected String getParameterTypes (JavaParameter [] parameters) {
+    StringBuffer sb = new StringBuffer ();
+    for (int i = 0; i < parameters.length; i ++) {
+        if (i > 0) {
+            sb.append (",");
+        }
+        if (X == Y) getTransformedQualifiedName (parameters [i].getType ().getJavaClass (), sb);
+        for (int j = 0; j < parameters [i].getType ().getDimensions (); j ++) {
+            sb.append ("[]");
+        }
+    }
+    return sb.toString ();
+}
+</source>
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="116" endline="119">
 public void setDescription (String description) {
     this.description = description;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="109" endline="112">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="127" endline="130">
 public String getDocs () {
     return (this.docs);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="114" endline="117">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="132" endline="135">
 public void setDocs (String docs) {
     this.docs = docs;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="125" endline="128">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="143" endline="146">
 public Image getImage () {
     return (this.image);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="130" endline="133">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="148" endline="151">
 public void setImage (Image image) {
     this.image = image;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="141" endline="144">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="159" endline="162">
 public String getLanguage () {
     return (this.language);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="146" endline="149">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="164" endline="167">
 public void setLanguage (String language) {
     this.language = language;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="157" endline="160">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="175" endline="178">
 public String getLastBuildDate () {
     return (this.lastBuildDate);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="162" endline="165">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="180" endline="183">
 public void setLastBuildDate (String lastBuildDate) {
     this.lastBuildDate = lastBuildDate;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="173" endline="176">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="191" endline="194">
 public String getLink () {
     return (this.link);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="178" endline="181">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="196" endline="199">
 public void setLink (String link) {
     this.link = link;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="189" endline="192">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="207" endline="210">
 public String getManagingEditor () {
     return (this.managingEditor);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="194" endline="197">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="212" endline="215">
 public void setManagingEditor (String managingEditor) {
     this.managingEditor = managingEditor;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="205" endline="208">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="223" endline="226">
 public String getPubDate () {
     return (this.pubDate);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="210" endline="213">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="228" endline="231">
 public void setPubDate (String pubDate) {
     this.pubDate = pubDate;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="221" endline="224">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="239" endline="242">
 public String getRating () {
     return (this.rating);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="226" endline="229">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="244" endline="247">
 public void setRating (String rating) {
     this.rating = rating;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="237" endline="240">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="255" endline="258">
 public TextInput getTextInput () {
     return (this.textInput);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="242" endline="245">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="260" endline="263">
 public void setTextInput (TextInput textInput) {
     this.textInput = textInput;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="253" endline="256">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="271" endline="274">
 public String getTitle () {
     return (this.title);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="258" endline="261">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="276" endline="279">
 public void setTitle (String title) {
     this.title = title;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="269" endline="272">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="287" endline="290">
 public double getVersion () {
     return (this.version);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="274" endline="277">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="292" endline="295">
 public void setVersion (double version) {
     this.version = version;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="285" endline="288">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="303" endline="306">
 public String getWebMaster () {
     return (this.webMaster);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="290" endline="293">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="308" endline="311">
 public void setWebMaster (String webMaster) {
     this.webMaster = webMaster;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="304" endline="310">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="322" endline="328">
 public void addItem (Item item) {
     synchronized (items) {
         items.add (item);
     }
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="318" endline="324">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="336" endline="342">
 public void addSkipDay (String skipDay) {
     synchronized (skipDays) {
         skipDays.add (skipDay);
     }
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="332" endline="338">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="350" endline="356">
 public void addSkipHour (String skipHour) {
     synchronized (skipHours) {
         skipHours.add (skipHour);
     }
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="343" endline="346">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="361" endline="364">
 public List getItems () {
     return items;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="352" endline="359">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="370" endline="377">
 public String [] findSkipDays () {
     synchronized (skipDays) {
         String skipDays [] = new String [this.skipDays.size ()];
@@ -11208,12 +11225,12 @@ public String [] findSkipDays () {
     }
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="365" endline="368">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="383" endline="386">
 public String [] getSkipHours () {
     return findSkipHours ();
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="374" endline="381">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="392" endline="399">
 public String [] findSkipHours () {
     synchronized (skipHours) {
         String skipHours [] = new String [this.skipHours.size ()];
@@ -11221,26 +11238,26 @@ public String [] findSkipHours () {
     }
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="387" endline="390">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="405" endline="408">
 public String [] getSkipDays () {
     return findSkipDays ();
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="398" endline="404">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="416" endline="422">
 public void removeItem (Item item) {
     synchronized (items) {
         items.remove (item);
     }
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="412" endline="418">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="430" endline="436">
 public void removeSkipDay (String skipDay) {
     synchronized (skipDays) {
         skipDays.remove (skipDay);
     }
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="426" endline="432">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java" startline="444" endline="450">
 public void removeSkipHour (String skipHour) {
     synchronized (skipHours) {
         skipHours.remove (skipHour);
@@ -14216,25 +14233,12 @@ public int getWidth () {
     return (this.width);
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/digester/rss/Image.java" startline="127" endline="142">
-public void testConstructorAttributes () throws Exception {
-    Constructor c = SuperSample.class.getDeclaredConstructor (new Class [] {String.class, (new String [0] [0]).getClass ()});
-    assertEquals (1, Attributes.getAttributes (c).size ());
-    assertEquals (1, Attributes.getAttributes (c, Dependency.class).size ());
-    assertTrue (Attributes.hasAttributeType (c, Dependency.class));
-    assertTrue (Attributes.hasAttribute (c, new Dependency (SampleService.class, "sample-ctor2")));
-    assertEquals (1, Attributes.getParameterAttributes (c, 1).size ());
-    assertEquals (1, Attributes.getParameterAttributes (c, 1, ThreadSafe.class).size ());
-    assertTrue (Attributes.hasParameterAttributeType (c, 1, ThreadSafe.class));
-    assertTrue (Attributes.hasParameterAttribute (c, 1, new ThreadSafe ()));
-}
-</source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/digester/rss/Image.java" startline="144" endline="147">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/digester/rss/Image.java" startline="128" endline="131">
 public void setWidth (int width) {
     this.width = width;
 }
 </source>
-<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/digester/rss/Image.java" startline="159" endline="196">
+<source file="systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/digester/rss/Image.java" startline="143" endline="180">
 void render (PrintWriter writer) {
     writer.println ("    <image>");
     writer.print ("      <title>");

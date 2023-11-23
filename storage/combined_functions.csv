@@ -1741,19 +1741,6 @@ public boolean suppressElement (ElementDescriptor element, String namespaceUrl, 
 }
 ",102,111,33,33-102-111
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java,"
-public void testConstructorAttributes () throws Exception {
-    Constructor c = SuperSample.class.getDeclaredConstructor (new Class [] {String.class, (new String [0] [0]).getClass ()});
-    assertEquals (1, Attributes.getAttributes (c).size ());
-    assertEquals (1, Attributes.getAttributes (c, Dependency.class).size ());
-    assertTrue (Attributes.hasAttributeType (c, Dependency.class));
-    assertTrue (Attributes.hasAttribute (c, new Dependency (SampleService.class, ""sample-ctor2"")));
-    assertEquals (1, Attributes.getParameterAttributes (c, 1).size ());
-    assertEquals (1, Attributes.getParameterAttributes (c, 1, ThreadSafe.class).size ());
-    assertTrue (Attributes.hasParameterAttributeType (c, 1, ThreadSafe.class));
-    assertTrue (Attributes.hasParameterAttribute (c, 1, new ThreadSafe ()));
-}
-",133,148,33,33-133-148
-systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java,"
 public void testSuppressElementName () throws Exception {
     PersonBean angLee = new NullPersonBean (""Ang"", ""Lee"");
     MovieBean movie = new MovieBean (""Crouching Tiger, Hidden Dragon"", 2000, angLee);
@@ -1780,12 +1767,12 @@ public void testSuppressElementName () throws Exception {
     String expected = ""<?xml version='1.0'?>"" + ""<movie>"" + ""    <name>Crouching Tiger, Hidden Dragon</name>"" + ""    <director>"" + ""        <forenames>Ang</forenames>"" + ""        <surname>Lee</surname>"" + ""     </director>"" + ""    <actors>"" + ""         <actor>"" + ""              <forenames>Yun-Fat</forenames>"" + ""              <surname>Chow</surname>"" + ""         </actor>"" + ""         <actor>"" + ""              <forenames>Michelle</forenames>"" + ""              <surname>Yeoh</surname>"" + ""         </actor>"" + ""         <actor>"" + ""           <forenames>Ziyi</forenames>"" + ""            <surname>Zhang</surname>"" + ""          </actor>"" + ""    </actors>"" + ""</movie>"";
     xmlAssertIsomorphicContent (parseString (expected), parseString (out));
 }
-",151,208,33,33-151-208
+",135,192,33,33-135-192
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java,"
 public boolean suppressAttribute (AttributeDescriptor attributeDescriptor, String value) {
     return DEFAULT.suppressAttribute (attributeDescriptor, value);
 }
-",166,169,33,33-166-169
+",150,153,33,33-150-153
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java,"
 public boolean suppressElement (ElementDescriptor element, String namespaceUrl, String localName, String qualifiedName, Object value) {
     boolean result = false;
@@ -1794,7 +1781,7 @@ public boolean suppressElement (ElementDescriptor element, String namespaceUrl, 
     }
     return result;
 }
-",171,180,33,33-171-180
+",155,164,33,33-155-164
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java,"
 public void testSuppressName () throws Exception {
     PersonBean angLee = new NullPersonBean (""Ang"", ""Lee"");
@@ -1822,12 +1809,12 @@ public void testSuppressName () throws Exception {
     String expected = ""<?xml version='1.0'?>"" + ""<movie>"" + ""    <name>Crouching Tiger, Hidden Dragon</name>"" + ""    <year>2000</year>"" + ""    <director>"" + ""        <forenames>Ang</forenames>"" + ""        <surname>Lee</surname>"" + ""     </director>"" + ""    <actors>"" + ""    </actors>"" + ""</movie>"";
     xmlAssertIsomorphicContent (parseString (expected), parseString (out));
 }
-",210,256,33,33-210-256
+",194,240,33,33-194-240
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java,"
 public boolean suppressAttribute (AttributeDescriptor attributeDescriptor, String value) {
     return DEFAULT.suppressAttribute (attributeDescriptor, value);
 }
-",225,228,33,33-225-228
+",209,212,33,33-209-212
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/TestSuppressElement.java,"
 public boolean suppressElement (ElementDescriptor element, String namespaceUrl, String localName, String qualifiedName, Object value) {
     boolean result = false;
@@ -1836,7 +1823,7 @@ public boolean suppressElement (ElementDescriptor element, String namespaceUrl, 
     }
     return result;
 }
-",230,239,33,33-230-239
+",214,223,33,33-214-223
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/io/SAXContentHandler.java,"
 public SAXContentHandler (Writer out) {
     this.out = out;
@@ -8062,6 +8049,21 @@ private BeanWriter newBeanWriter (Writer writer, NameMapper mapper) {
 }
 ",113,123,156,156-113-123
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/strategy/TestElementsIO.java,"
+protected String getParameterTypes (JavaParameter [] parameters) {
+    StringBuffer sb = new StringBuffer ();
+    for (int i = 0; i < parameters.length; i ++) {
+        if (i > 0) {
+            sb.append ("","");
+        }
+        getTransformedQualifiedName (parameters [i].getType ().getJavaClass (), sb);
+        for (int j = 0; j < parameters [i].getType ().getDimensions (); j ++) {
+            sb.append (""[]"");
+        }
+    }
+    return sb.toString ();
+}
+",124,141,156,156-124-141
+systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/strategy/TestElementsIO.java,"
 private XMLIntrospector newXMLIntrospector (NameMapper mapper) {
     XMLIntrospector introspector = new XMLIntrospector ();
     introspector.getConfiguration ().setAttributesForPrimitives (true);
@@ -8069,7 +8071,7 @@ private XMLIntrospector newXMLIntrospector (NameMapper mapper) {
     introspector.getConfiguration ().setElementNameMapper (mapper);
     return introspector;
 }
-",125,132,156,156-125-132
+",143,150,156,156-143-150
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/strategy/Element.java,"
 public Element () {
 }
@@ -11051,156 +11053,171 @@ public String getDescription () {
 }
 ",93,96,211,211-93-96
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
+protected String getParameterTypes (JavaParameter [] parameters) {
+    StringBuffer sb = new StringBuffer ();
+    for (int i = 0; i < parameters.length; i ++) {
+        if (i > 0) {
+            sb.append ("","");
+        }
+        if (X == Y) getTransformedQualifiedName (parameters [i].getType ().getJavaClass (), sb);
+        for (int j = 0; j < parameters [i].getType ().getDimensions (); j ++) {
+            sb.append (""[]"");
+        }
+    }
+    return sb.toString ();
+}
+",97,114,211,211-97-114
+systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setDescription (String description) {
     this.description = description;
 }
-",98,101,211,211-98-101
+",116,119,211,211-116-119
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String getDocs () {
     return (this.docs);
 }
-",109,112,211,211-109-112
+",127,130,211,211-127-130
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setDocs (String docs) {
     this.docs = docs;
 }
-",114,117,211,211-114-117
+",132,135,211,211-132-135
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public Image getImage () {
     return (this.image);
 }
-",125,128,211,211-125-128
+",143,146,211,211-143-146
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setImage (Image image) {
     this.image = image;
 }
-",130,133,211,211-130-133
+",148,151,211,211-148-151
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String getLanguage () {
     return (this.language);
 }
-",141,144,211,211-141-144
+",159,162,211,211-159-162
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setLanguage (String language) {
     this.language = language;
 }
-",146,149,211,211-146-149
+",164,167,211,211-164-167
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String getLastBuildDate () {
     return (this.lastBuildDate);
 }
-",157,160,211,211-157-160
+",175,178,211,211-175-178
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setLastBuildDate (String lastBuildDate) {
     this.lastBuildDate = lastBuildDate;
 }
-",162,165,211,211-162-165
+",180,183,211,211-180-183
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String getLink () {
     return (this.link);
 }
-",173,176,211,211-173-176
+",191,194,211,211-191-194
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setLink (String link) {
     this.link = link;
 }
-",178,181,211,211-178-181
+",196,199,211,211-196-199
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String getManagingEditor () {
     return (this.managingEditor);
 }
-",189,192,211,211-189-192
+",207,210,211,211-207-210
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setManagingEditor (String managingEditor) {
     this.managingEditor = managingEditor;
 }
-",194,197,211,211-194-197
+",212,215,211,211-212-215
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String getPubDate () {
     return (this.pubDate);
 }
-",205,208,211,211-205-208
+",223,226,211,211-223-226
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setPubDate (String pubDate) {
     this.pubDate = pubDate;
 }
-",210,213,211,211-210-213
+",228,231,211,211-228-231
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String getRating () {
     return (this.rating);
 }
-",221,224,211,211-221-224
+",239,242,211,211-239-242
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setRating (String rating) {
     this.rating = rating;
 }
-",226,229,211,211-226-229
+",244,247,211,211-244-247
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public TextInput getTextInput () {
     return (this.textInput);
 }
-",237,240,211,211-237-240
+",255,258,211,211-255-258
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setTextInput (TextInput textInput) {
     this.textInput = textInput;
 }
-",242,245,211,211-242-245
+",260,263,211,211-260-263
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String getTitle () {
     return (this.title);
 }
-",253,256,211,211-253-256
+",271,274,211,211-271-274
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setTitle (String title) {
     this.title = title;
 }
-",258,261,211,211-258-261
+",276,279,211,211-276-279
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public double getVersion () {
     return (this.version);
 }
-",269,272,211,211-269-272
+",287,290,211,211-287-290
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setVersion (double version) {
     this.version = version;
 }
-",274,277,211,211-274-277
+",292,295,211,211-292-295
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String getWebMaster () {
     return (this.webMaster);
 }
-",285,288,211,211-285-288
+",303,306,211,211-303-306
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void setWebMaster (String webMaster) {
     this.webMaster = webMaster;
 }
-",290,293,211,211-290-293
+",308,311,211,211-308-311
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void addItem (Item item) {
     synchronized (items) {
         items.add (item);
     }
 }
-",304,310,211,211-304-310
+",322,328,211,211-322-328
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void addSkipDay (String skipDay) {
     synchronized (skipDays) {
         skipDays.add (skipDay);
     }
 }
-",318,324,211,211-318-324
+",336,342,211,211-336-342
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void addSkipHour (String skipHour) {
     synchronized (skipHours) {
         skipHours.add (skipHour);
     }
 }
-",332,338,211,211-332-338
+",350,356,211,211-350-356
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public List getItems () {
     return items;
 }
-",343,346,211,211-343-346
+",361,364,211,211-361-364
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String [] findSkipDays () {
     synchronized (skipDays) {
@@ -11208,12 +11225,12 @@ public String [] findSkipDays () {
         return ((String []) this.skipDays.toArray (skipDays));
     }
 }
-",352,359,211,211-352-359
+",370,377,211,211-370-377
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String [] getSkipHours () {
     return findSkipHours ();
 }
-",365,368,211,211-365-368
+",383,386,211,211-383-386
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String [] findSkipHours () {
     synchronized (skipHours) {
@@ -11221,33 +11238,33 @@ public String [] findSkipHours () {
         return ((String []) this.skipHours.toArray (skipHours));
     }
 }
-",374,381,211,211-374-381
+",392,399,211,211-392-399
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public String [] getSkipDays () {
     return findSkipDays ();
 }
-",387,390,211,211-387-390
+",405,408,211,211-405-408
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void removeItem (Item item) {
     synchronized (items) {
         items.remove (item);
     }
 }
-",398,404,211,211-398-404
+",416,422,211,211-416-422
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void removeSkipDay (String skipDay) {
     synchronized (skipDays) {
         skipDays.remove (skipDay);
     }
 }
-",412,418,211,211-412-418
+",430,436,211,211-430-436
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/Channel.java,"
 public void removeSkipHour (String skipHour) {
     synchronized (skipHours) {
         skipHours.remove (skipHour);
     }
 }
-",426,432,211,211-426-432
+",444,450,211,211-444-450
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/examples/rss/TestRSS.java,"
 public TestRSS (String testName) {
     super (testName);
@@ -14218,23 +14235,10 @@ public int getWidth () {
 }
 ",123,126,259,259-123-126
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/digester/rss/Image.java,"
-public void testConstructorAttributes () throws Exception {
-    Constructor c = SuperSample.class.getDeclaredConstructor (new Class [] {String.class, (new String [0] [0]).getClass ()});
-    assertEquals (1, Attributes.getAttributes (c).size ());
-    assertEquals (1, Attributes.getAttributes (c, Dependency.class).size ());
-    assertTrue (Attributes.hasAttributeType (c, Dependency.class));
-    assertTrue (Attributes.hasAttribute (c, new Dependency (SampleService.class, ""sample-ctor2"")));
-    assertEquals (1, Attributes.getParameterAttributes (c, 1).size ());
-    assertEquals (1, Attributes.getParameterAttributes (c, 1, ThreadSafe.class).size ());
-    assertTrue (Attributes.hasParameterAttributeType (c, 1, ThreadSafe.class));
-    assertTrue (Attributes.hasParameterAttribute (c, 1, new ThreadSafe ()));
-}
-",127,142,259,259-127-142
-systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/digester/rss/Image.java,"
 public void setWidth (int width) {
     this.width = width;
 }
-",144,147,259,259-144-147
+",128,131,259,259-128-131
 systems/mutantbase/commons-betwixt-0.8-src/src/test/org/apache/commons/digester/rss/Image.java,"
 void render (PrintWriter writer) {
     writer.println (""    <image>"");
@@ -14262,7 +14266,7 @@ void render (PrintWriter writer) {
     }
     writer.println (""    </image>"");
 }
-",159,196,259,259-159-196
+",143,180,259,259-143-180
 systems/mutantbase/commons-betwixt-0.8-src/src/java/org/apache/commons/betwixt/io/SAXBeanWriter.java,"
 public SAXBeanWriter (ContentHandler contentHandler) {
     this.contentHandler = contentHandler;
