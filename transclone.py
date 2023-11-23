@@ -26,14 +26,14 @@ parser.add_argument('--root' , default=project_root+'/')
 parser.add_argument('--src_gmn_path' , default= project_root+'/gmn/gmn_srcml_clcdsa.pt')
 parser.add_argument("--pairs",default= project_root+'/storage/pairs.csv')
 args = parser.parse_args()
-p="/home/egk204/projects/transclone/storage/mutation_formatted.csv"
-print(p)
-# with open(p, 'r') as file:
-#     content = file.read()
-#     print(content)
-# # print(open(p).read())
+# p="/home/egk204/projects/transclone/storage/mutation_formatted.csv"
+# print(p)
+# # with open(p, 'r') as file:
+# #     content = file.read()
+# #     print(content)
+# # # print(open(p).read())
 
-quit()
+# quit()
 args.systems_converted = args.root+'storage/systems_converted/'
 # logging.info(args)
 
