@@ -48,7 +48,8 @@ cd ..
 
 
 pip install six scikit-learn stringcase transformers ply slimit astunparse submitit cython pandas apex anytree
-pip install sacrebleu=="1.2.11" javalang tree_sitter psutil fastBPE hydra-core --upgrade --pre black==19.10b0
+pip install sacrebleu=="1.2.11" javalang psutil fastBPE hydra-core --upgrade --pre black==19.10b0
+pip install tree-sitter==0.21.3
 
 #transcoder setup : clang
 cd /usr/lib/x86_64-linux-gnu/
