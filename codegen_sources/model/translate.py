@@ -250,16 +250,29 @@ def translate_helper(params):
     pass
 
 def get_translation(params, translator):
-    input = params.fragment_to_conv
+    input_code = params.fragment_to_conv
+    print("input_code")
+    print(input_code)
     with torch.no_grad():
         output = translator.translate(
-            input, lang1=params.src_lang, lang2=params.tgt_lang, beam_size=1)#params.beam_size
-    #print(output)
+            input_code, lang1=params.src_lang, lang2=params.tgt_lang, beam_size=1)#params.beam_size
     return output
 # ------------------------------------------------------------
-# covert all fragments to java
-#from codegen_sources.model.translate import get_translation
-# print(get_translation('test1.py'))
+# # convert all fragments to java
+# def p2j(code, translator):
+#     input = code
+#     with torch.no_grad():
+#         output = translator.translate(
+#             input, lang1="python", lang2="java", beam_size=1)#params.beam_size
+#     print("output code list: ")
+#     print(output)
+#     return output
+# # from codegen_sources.model.translate import get_translation
+# transcoder_path = project_root+'/storage/pretrained/translator_transcoder_size_from_DOBF.pth'            
+# BPE_path = str(Path(__file__).parents[2].joinpath("data/bpe/cpp-java-python/codes"))
+# translator = Translator(transcoder_path, BPE_path)
+# print(p2j('def abc() :INDENT    pass DEDENT', translator))
+#  ----------------------------
 import pandas as pd
 import time
 import os
